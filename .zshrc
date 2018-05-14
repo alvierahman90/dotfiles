@@ -14,3 +14,5 @@ echo ""
 
 alias config='/usr/bin/git --git-dir=/home/alvie/Documents/projects/dotfiles.git --work-tree=/home/alvie'
 config config --local status.showUntrackedFiles no
+
+alias uarpi="ssh pi@192.168.1.109 'cd /home/pi/holdon-bot; git pull; sudo reboot'"
