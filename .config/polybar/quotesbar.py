@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import time
+import json
 
 SPEED=5
 TWEETERS=['billwurtz','deiuge']
@@ -8,7 +9,6 @@ MAX_LENGTH=100
 
 def auth_twitter():
     import twitter
-    import json
     with open('/home/alvie/.twitter_auth') as f:
         creds = json.loads(f.read())
 
@@ -22,44 +22,35 @@ def auth_twitter():
 
 def add_quotes_from_twitter(t,user):
     tweets = t.statuses.user_timeline(screen_name=user,include_rts=False)
-    quotes = []
-    existing_quotes = get_quotes()
+    quotes = get_quotes()
     
     for i in tweets:
-        if i['text'] not in existing_quotes:
-            write_quote(i['text'].replace('\n','     '))
+        write_quote(i)
 
 def get_quotes():
     output = []
     with open('/home/alvie/.config/polybar/quotes') as f:
-        for i in f.read().split('\n'):
-            if i != '':
-                output.append(i)
+        output = json.loads(f.read())
     return output
 
 def shuffle_quotes():
-    import random
-    quotes = get_quotes()
-    random.shuffle(quotes)
-    with open('/home/alvie/.config/polybar/quotes','w') as f:
-        f.write('')
-
-    for i in quotes:
-        write_quote(i)
+    # TODO write this function
+    pass
 
 def write_quote(quote):
-    with open('/home/alvie/.config/polybar/quotes', 'a') as f:
-        f.write(quote+ '\n')
+    quotes = get_quotes()
+    quotes[quote['id']] = quote
+    with open('/home/alvie/.config/polybar/quotes', 'w') as f:
+        f.write(json.dumps(quotes))
 
 def get_offset(string):
     return (int(time.time()*SPEED) % len(string))
 
 def main(debug=False):
     preoutput = ''
-    for i in get_quotes():
-        if i != '':
-            preoutput += i + '   -   '
-    preoutput += "sometimes life takes away the lemons"
+    quotes = get_quotes()
+    for i in quotes.keys():
+        preoutput += quotes[i]['text'] + '   -   '
     output="..."
     for i in range(len(preoutput)):
         if i < MAX_LENGTH:
