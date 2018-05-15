@@ -34,19 +34,31 @@ def get_quotes():
         output = json.loads(f.read())
     return output
 
+# overwrite the whole thing as opposed to adding one
+def write_quotes(quotes):
+    with open('/home/alvie/.config/polybar/quotes', 'w') as f:
+        f.write(json.dumps(quotes))
+
+
 # required object format
 # "UNIQUEID" : { "text" : "TEXT" }
 
+# add a quote as opposed to overwriting the whole thing
 def write_quote(quote):
     quotes = get_quotes()
     quotes[quote['id']] = quote
-    with open('/home/alvie/.config/polybar/quotes', 'w') as f:
-        f.write(json.dumps(quotes))
+    write_quotes(quotes)
+
+# returns deleted message on success, return None if quote isn't found
+def remove_quote(quote_id):
+    quotes = get_quotes()
+    deleted = quotes.pop(quote_id, None)
+    write_quotes(quotes)
+    return deleted
 
 def shuffle_quotes():
     # TODO write this function
     pass
-
 
 def get_offset(string):
     return (int(time.time()*SPEED) % len(string))
@@ -58,11 +70,18 @@ def main(debug=False):
     parser = argparse.ArgumentParser()
     parser.add_argument('-a', '--add', type=str, help="Add a quote.")
     parser.add_argument('-i', '--custom-id', type=str, 
-            default=False,
+     default=False,
      help="A custom id for the quote command. Can be used to overwrite quote.")
     parser.add_argument('-l', '--list-quotes', action='store_true', 
-            default=False, help="List the quotes.")
+     default=False, help="List the quotes.")
+    parser.add_argument('-r', '--remove', type=str, 
+     help="Remove a quote by id. Prints the quote with full details if mistake. ")
     args = parser.parse_args()
+
+    if args.add and args.remove:
+        print("You probably shouldn't add and remove a quote at the same time.")
+        print("Exiting...")
+        return 0
 
     quotes = get_quotes()
 
@@ -81,6 +100,7 @@ def main(debug=False):
                     id_int += 1
             quote_object['id'] = quote_id
         write_quote(quote_object)
+        print("Written quote with ID {0}".format(quote_id))
         return 0
 
     if args.list_quotes:
@@ -88,9 +108,18 @@ def main(debug=False):
             print(str(quotes[i]['id']) + "\t" + quotes[i]['text'])
         return 0
 
-    preoutput = ''
+    if args.remove:
+        print("Deleting entry with ID {0}".format(args.remove))
+        deleted = remove_quote(args.remove)
+        if deleted is None:
+            print("ID not found.")
+            return 1
+        print(str(deleted))
+        return 0
+
+    preoutput = ""
     for i in quotes.keys():
-        preoutput += quotes[i]['text'] + '   -   ' 
+        preoutput += quotes[i]['text'] + "   -   "
         output="..."
     for i in range(len(preoutput)):
         if i < MAX_LENGTH:
