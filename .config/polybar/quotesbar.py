@@ -45,6 +45,9 @@ def write_quotes(quotes):
 
 # add a quote as opposed to overwriting the whole thing
 def write_quote(quote):
+    # lazy and hacky way to prevent tweets with URLs making it into my list
+    if "http" in quote['text']:
+        return 1
     quotes = get_quotes()
     quotes[quote['id']] = quote
     write_quotes(quotes)
@@ -56,6 +59,8 @@ def remove_quote(quote_id):
     write_quotes(quotes)
     return deleted
 
+# this could probably be implemented by making a list from get_quotes then
+# shuffling that in the main() function in the one place it's needed
 def shuffle_quotes():
     # TODO write this function
     pass
