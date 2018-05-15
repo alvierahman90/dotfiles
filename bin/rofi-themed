@@ -1,0 +1,18 @@
+#!/bin/bash
+
+background="argb:c0002b36"
+#background="argb:ff002b36"
+trns="00000000"
+fg=af005f
+
+rofi \
+	-i \
+	-hide-scrollbar \
+	-font "System San Francisco Display Ultralight 10" \
+	$1 \
+	#-color-window "$background, $background, #$trns" \
+	#-color-normal "#$trns, #ffffff, #$trns, argb:c0073642, #$fg" \
+	#-color-active "#$trns, #ffffff, #$trns, #002b36, #$fg" \
+	#-color-urgent "#$trns, #dc322f, #$trns, #002b36, #ffffff" \
+	#-padding 400\
+	#-fullscreen \

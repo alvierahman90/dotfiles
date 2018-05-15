@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+function discord_update {
+	cd /home/alvie/.apps/
+	wget -O discord.tar.gz \
+	  "https://discordapp.com/api/download?platform=linux&format=tar.gz"
+	tar -xzf discord.tar.gz
+	rm discord.tar.gz
+}
+	
+
+case $1 in 
+	"updateonly")
+		# another shell script written by me
+		# installs/updates discord into $USERDIR/.apps/Discord
+		discord_update
+		;;
+	"nocheckupdate")
+		/home/alvie/.apps/Discord/Discord
+		;;
+	*)
+		discord_update
+		/home/alvie/.apps/Discord/Discord
+esac

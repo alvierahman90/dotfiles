@@ -1,0 +1,10 @@
+#!/bin/bash
+
+file="$1"
+
+echo "Time to render: "
+time \
+	pandoc \
+		-o $file.pdf \
+		--template "/home/alvie/.pandoc/default.latex" \
+		$file

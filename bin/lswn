@@ -1,0 +1,1 @@
+wmctrl -l | cut -b 23- | sort

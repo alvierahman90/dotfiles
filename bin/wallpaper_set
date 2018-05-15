@@ -1,0 +1,23 @@
+#!/bin/bash
+
+options="--bg-fill"
+
+case $1 in
+	"permanent")
+		echo "PERMANENT MODE SELECTED"
+		echo "BACKUP LOCATED AT ~/.wallpaper.bak"
+		cp ~/.wallpaper ~/.wallpaper.bak
+		cp $2 ~/.wallpaper
+		feh $options ~/.wallpaper
+		exit
+		;;
+	"reset")
+		echo "Setting wallpaper to ~/.wallpaper"
+		feh $options ~/.wallpaper
+		exit
+		;;
+	
+esac
+
+echo "Setting wallpaper to $1"
+feh $options $1

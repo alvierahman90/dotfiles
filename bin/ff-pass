@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+import json
+import os
+
+password = input("New password: ")
+with open(os.path.expanduser("~/.ff-tasks-settings"), "r") as file:
+	a = json.loads(file.read())
+
+a["password"] = password
+
+with open(os.path.expanduser("~/.ff-tasks-settings"), "w") as file:
+	file.write(json.dumps(a))

@@ -1,0 +1,11 @@
+#!/bin/bash
+base_command="scrot"
+options=""
+filename="/home/alvie/Pictures/Screenshot-$(date --iso-8601=ns).png"
+
+if [ "$1" == "selection" ]
+then
+	options="$options -s"
+fi
+
+$base_command $options "$filename"
