@@ -1,0 +1,181 @@
+# File created 2017-03-05
+#
+
+# Should you change your keyboard layout some time, delete
+# this file and re-run i3-config-wizard(1).
+#
+
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+
+set $mod Mod1
+
+# window title font
+#
+#font pango:Systen San Francisco Display Ultralight 10
+font scientifica
+
+floating_modifier $mod
+
+bindsym $mod+Return exec termite
+
+bindsym $mod+Shift+q kill
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up	
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+#bindsym $mod+semicolon split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
+
+# workspace related controls are done with external command which is triggered 
+# through rofi - ~/bin/wksp
+#
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+#
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+#
+mode "resize" {
+        bindsym h resize shrink width  10 px or 10 ppt
+        bindsym j resize grow   height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow   width  10 px or 10 ppt
+	
+	bindsym Shift+h resize shrink width  1 px or 1 ppt
+        bindsym Shift+j resize grow   height 1 px or 1 ppt
+        bindsym Shift+k resize shrink height 1 px or 1 ppt
+        bindsym Shift+l resize grow   width  1 px or 1 ppt
+
+        # back to normal
+        #
+	bindsym $mod+r mode "default"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# color variables:
+# active color
+# inactive background color
+# text color
+# inactive text color
+# unfocused text color
+#
+set $ac		#cb4b16 
+set $bg		#002b36
+set $tc 	#eee8d5
+set $itc	#586e75
+set $ubgc     	#dc322f
+
+# window colors
+#                       border  bg      text    indicator
+#                       
+client.focused          $ac	$ac	$tc	#073642
+client.unfocused        $bg	$bg 	$itc 	#002b36
+client.focused_inactive $bg	$bg 	$itc	#002b36
+client.urgent           $ubgc   $ubgc   $tc	#002b36
+client.background	$bg
+
+# per window settings
+#
+for_window [class="^.*"] border pixel 2
+for_window [class="^Termite"] border pixel 15
+for_window [title="^.*noborder.*"] border pixel 0
+
+# rofi
+#
+bindsym $mod+d exec rofi-preconf window
+bindsym $mod+q exec rofi-preconf run
+bindsym $mod+Ctrl+q exec rofi-pass
+
+# music keybindings
+#
+bindsym $mod+n exec playerctl next
+bindsym $mod+Shift+n exec playerctl previous
+bindsym $mod+Ctrl+n exec playerctl play-pause
+
+hide_edge_borders both
+exec  compton --config /home/alvie/.config/compton.conf 
+
+# screenshot keybindings
+#
+bindsym --release Print exec ss
+bindsym --release shift+Print exec ss selection
+
+# set wallpaper
+#
+exec_always feh --bg-fill /home/alvie/.wallpaper
+
+# disable screen timeout
+#
+exec xset s off
+exec xset -dpms
+
+# starts cinnamon's screensaver daemon for if it's used to lock the screen
+# and adds the binding for locking 
+#
+#exec cinnamon-screensaver
+bindsym $mod+shift+x exec /home/alvie/bin/lock i3lockfancy
+
+exec redshift 
+
+# i3-gaps
+# 
+#gaps outer 10
+gaps inner 25
+#smart_gaps on
+
+# function keys
+#
+bindsym XF86AudioMute exec amixer sset 'Master' toggle
+bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
+bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
+
+workspace_layout tabbed
+
+# Class assigns before autostarting
+#
+assign [class="^qBittorrent$"] bt
+
+# Move to primary workspace and launch start up applications
+#
+exec i3 workspace main
+exec termite
+exec i3 workspace bt
+exec qbittorrent
+exec sleep 3
+exec i3 workspace main
+exec polybar top
+exec --not-startup-id unclutter -idle 1
+exec --not-startup-id lyt
+
+focus_follows_mouse no
+
+# Assigning windows
+#
+assign [class="^discord$"] chat
+assign [class="^TelegramDesktop$"] chat
