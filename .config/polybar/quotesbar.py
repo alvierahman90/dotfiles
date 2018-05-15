@@ -34,6 +34,9 @@ def get_quotes():
         output = json.loads(f.read())
     return output
 
+# required object format
+# "UNIQUEID" : { "text" : "TEXT" }
+
 def write_quote(quote):
     quotes = get_quotes()
     quotes[quote['id']] = quote
@@ -43,9 +46,6 @@ def write_quote(quote):
 def shuffle_quotes():
     # TODO write this function
     pass
-
-# required object format
-# "UNIQUEID" : { "text" : "TEXT" }
 
 
 def get_offset(string):
