@@ -26,6 +26,7 @@ def add_quotes_from_twitter(t,user):
     quotes = get_quotes()
     
     for i in tweets:
+        i['text'] = i['text'].replace('\n','    ')
         write_quote(i)
 
 def get_quotes():
@@ -79,6 +80,8 @@ def main(debug=False):
      help="A custom id for the quote command. Can be used to overwrite quote.")
     parser.add_argument('-l', '--list-quotes', action='store_true', 
      default=False, help="List the quotes.")
+    parser.add_argument('-u', '--update_quotes', action='store_true', 
+     default=False, help="Grab quotes from twitter.")
     parser.add_argument('-r', '--remove', type=str, 
      help="Remove a quote by id. Prints the quote with full details if mistake. ")
     args = parser.parse_args()
@@ -122,6 +125,14 @@ def main(debug=False):
         print(str(deleted))
         return 0
 
+    if int(time.time()) % 14400 == 0 or args.update_quotes:
+        t = auth_twitter()
+        for i in TWEETERS:
+            add_quotes_from_twitter(t,i)
+
+    if int(time.time()) % 3600 == 0:
+        shuffle_quotes()
+
     preoutput = ""
     for i in quotes.keys():
         preoutput += quotes[i]['text'] + "   -   "
@@ -138,13 +149,6 @@ def main(debug=False):
     output+='...'
 
 
-    if int(time.time()) % 14400 == 0:
-        t = auth_twitter()
-        for i in TWEETERS:
-            add_quotes_from_twitter(t,i)
-
-    if int(time.time()) % 3600 == 0:
-        shuffle_quotes()
 
     print(output.lower())
 
