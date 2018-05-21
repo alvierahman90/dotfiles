@@ -25,6 +25,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'spolu/dwm.vim'
 Plug 'vim-scripts/CycleColor'
+Plug 'tpope/vim-fugitive'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 let NERDTreeShowHidden=0
