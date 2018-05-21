@@ -4,7 +4,7 @@ export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export BETTER_EXCEPTIONS=1
 
-# prompt cloud "alvie" 
+prompt agnoster
 export GPG_TTY=$(tty)
 
 cat ~/.zpool.status
