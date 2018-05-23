@@ -9,29 +9,31 @@ import subprocess
 import argparse
 from time import sleep
 
+
 def get_args():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('command'
-            , nargs='+'
-            , help='l[ist], s[switch], or m[ove]'
-            , type=str)
-    parser.add_argument('-d', '--delay'
-            , default=0
-            , type=int
-            , help='Add a delay (in seconds) before executing command')
-    parser.add_argument('-f', '--follow'
-            , action='store_true'
-            , default=False
-            , help='Follow the workspace given when moving a container')
+    parser.add_argument('command',
+                        nargs='+',
+                        help='l[ist], s[switch], or m[ove]',
+                        type=str)
+    parser.add_argument('-d', '--delay',
+                        default=0,
+                        type=int,
+                        help='Add a delay (in seconds) before executing '
+                        'command')
+    parser.add_argument('-f', '--follow', action='store_true', default=False,
+                        help='Follow the workspace given when moving a '
+                        'container')
     return parser.parse_args()
 
+
 def list_workspaces():
-    raw = subprocess.run(['i3-msg', '-t', 'get_workspaces'], 
-            stdout=subprocess.PIPE)
+    raw = subprocess.run(['i3-msg', '-t', 'get_workspaces'],
+                         stdout=subprocess.PIPE)
     decoded = raw.stdout.decode('utf8')
     parsed = json.loads(decoded)
-        
+
     for i in parsed:
         if i["focused"]:
             print("x " + i["name"])
@@ -44,21 +46,23 @@ def list_workspaces():
 def switch_workspace(workspace):
     return subprocess.run(['i3', 'workspace', workspace]).returncode
 
+
 def move_container(workspace, follow=False):
     s = subprocess.run(['i3-msg', '-t', 'command', 'move', 'container', 'to',
-        'workspace', workspace])
-    
+                        'workspace', workspace])
+
     if follow:
         return switch_workspace(workspace)
     else:
         return s.returncode
+
 
 def main():
     args = get_args()
 
     sleep(args.delay)
 
-    if args.command[0][0]== 'l':
+    if args.command[0][0] == 'l':
         return list_workspaces()
     elif args.command[0][0] == 's':
         return switch_workspace(args.command[1])
@@ -66,6 +70,7 @@ def main():
         return move_container(args.command[1], args.follow)
 
     return 1
+
 
 if __name__ == "__main__":
     sys.exit(main())
