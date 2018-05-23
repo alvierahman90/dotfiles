@@ -28,6 +28,9 @@ Plug 'vim-scripts/CycleColor'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'sjl/gundo.vim'
 call plug#end()
 
 let NERDTreeShowHidden=0
