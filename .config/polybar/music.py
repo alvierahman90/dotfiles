@@ -1,34 +1,46 @@
 #!/usr/bin/env python3
 
-import json
 import subprocess
 
-def player(commands):
-    return subprocess.run(['playerctl'] + commands
-            , stdout=subprocess.PIPE).stdout.decode('utf-8')
 
-def get_status():
+def player(commands):
+    return subprocess.run(['playerctl'] + commands,
+                          stdout=subprocess.PIPE).stdout.decode('utf-8')
+
+
+def get_playing():
     if player(['status']) == 'Playing\n':
-        return "'re"
+        return True
     elif player(['status']) == 'Paused\n':
-        return " were"
+        return False
+
 
 def get_artist():
-    return player(['metadata','xesam:artist'])
+    return player(['metadata', 'xesam:artist'])
+
 
 def get_track():
-    return player(['metadata','xesam:title'])
+    return player(['metadata', 'xesam:title'])
+
 
 def get_album():
-    return player(['metadata','xesam:album'])
+    return player(['metadata', 'xesam:album'])
+
 
 def get_album_artist():
     song_artist = get_artist()
-    album_artist = player(['metadata','xesam:albumArtist'])
+    album_artist = player(['metadata', 'xesam:albumArtist'])
     if song_artist == album_artist:
         return 'their'
     else:
         return "{}'s".format(album_artist)
+
+
+def status_symbol():
+    if get_playing():
+        return '>'
+    else:
+        return '|'
 
 
 # status_message = "You{status} listening to {artist}'s \"{track}\" from "
@@ -44,9 +56,10 @@ if get_track() == "":
     print("No is music currently playing")
     exit(0)
 
-status_message = "{track} - {artist}".format(
-        track = get_track()
-        , artist = get_artist()
+status_message = "{playing} {track} - {artist}".format(
+                                            playing=status_symbol(),
+                                            track=get_track(),
+                                            artist=get_artist()
         )
 
 print(status_message)
