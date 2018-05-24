@@ -8,7 +8,7 @@ def player(commands):
                           stdout=subprocess.PIPE).stdout.decode('utf-8')
 
 
-def get_playing():
+def playing():
     if player(['status']) == 'Playing\n':
         return True
     elif player(['status']) == 'Paused\n':
@@ -37,7 +37,7 @@ def get_album_artist():
 
 
 def status_symbol():
-    if get_playing():
+    if playing():
         return '>'
     else:
         return '|'
@@ -56,10 +56,16 @@ if get_track() == "":
     print("No is music currently playing")
     exit(0)
 
-status_message = "{playing} {track} - {artist}".format(
-                                            playing=status_symbol(),
-                                            track=get_track(),
-                                            artist=get_artist()
-        )
+if playing():
+    status_message = "{playing} {track} - {artist}".format(
+                                                playing=status_symbol(),
+                                                track=get_track(),
+                                                artist=get_artist()
+            )
+else:
+    status_message = "{playing} {track}".format(
+                                                playing=status_symbol(),
+                                                track=get_track()
+                                                )
 
 print(status_message)
