@@ -40,6 +40,8 @@
     background-color: @background;
     border:           0;
     padding:          450;
+    width:            100%;
+    font:             "scientifica 8";
 }
 #mainbox {
     border:  0;
@@ -102,7 +104,7 @@
     text-color:       @alternate-active-foreground;
 }
 #scrollbar {
-    width:        4px ;
+    width:        0;
     border:       0;
     handle-width: 8px ;
     padding:      0;

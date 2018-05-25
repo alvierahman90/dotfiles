@@ -1,8 +1,0 @@
-rofi.color-window: argb:90002b36, argb:f0002b36, argb:00000000
-rofi.color-normal: argb:00002b36, argb:ff839496, argb:00002b36, argb:00002b36, #eee8d5
-rofi.color-active: argb:00002b36, argb:ff839496, argb:00002b36, argb:00002b36, #eee8d5
-kofi.color-urgent: argb:00002b36, argb:ff839496, argb:00002b36, argb:00002b36, #d33682
-
-rofi.lines: 1
-rofi.width: 25%
-rofi.padding: 450
