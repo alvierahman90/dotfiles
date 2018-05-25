@@ -9,7 +9,7 @@ burst_usd = json.loads(r.text)[0]["price_usd"]
 r = requests.get('https://api.coinmarketcap.com/v1/ticker/bitcoin/')
 bitcoin_usd = json.loads(r.text)[0]["price_usd"]
 
-status_message = "BURST: ${burst}   BTC: ${bitcoin}".format(
+status_message = "Burstcoin: ${burst}   Bitcoin: ${bitcoin}".format(
                                                             burst=burst_usd,
                                                             bitcoin=bitcoin_usd
         )
