@@ -2,8 +2,5 @@
 
 rofi \
 	-i \
-	-hide-scrollbar \
-	-font "scientifica 8" \
 	$1 \
-	-fullscreen\
-	-font "System San Francisco Display Ultralight 10" \
+	-theme solarized
