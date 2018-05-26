@@ -49,7 +49,7 @@ font-0 = scientifica
 font-1 = ${root.font-0}
 font-2 = ${root.font-0}
 
-modules-left = freezecheck music 
+modules-left = music 
 modules-center = xwindow
 modules-right = pulseaudio date
 module-padding = 0
