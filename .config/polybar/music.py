@@ -71,11 +71,11 @@ if playing():
                                                 playing=status_symbol(),
                                                 track=get_track(),
                                                 artist=get_artist()
-            )
+                                                )
 else:
     status_message = "{playing} {track}".format(
                                                 playing=status_symbol(),
                                                 track=get_track()
-            )
+                                                )
 
 print(status_message)
