@@ -43,6 +43,15 @@ def status_symbol():
         return '|'
 
 
+def blinker(text):
+    from time import time
+
+    if int(time()) % 2 == 0:
+        return text
+    else:
+        return ' ' * len(text)
+
+
 # status_message = "You{status} listening to {artist}'s \"{track}\" from "
     # "{album_artist} album \"{album}\".".format(
         # status = get_status()
@@ -51,6 +60,7 @@ def status_symbol():
         # , album = get_album()
         # , album_artist = get_album_artist()
         # )
+
 
 if get_track() == "":
     print("No is music currently playing")
@@ -66,6 +76,6 @@ else:
     status_message = "{playing} {track}".format(
                                                 playing=status_symbol(),
                                                 track=get_track()
-                                                )
+            )
 
 print(status_message)
