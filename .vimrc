@@ -31,6 +31,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'sjl/gundo.vim'
+Plug 'alvierahman90/nofrils'
 call plug#end()
 
 let NERDTreeShowHidden=0
@@ -58,3 +59,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+
+let g:nofrils_alt_heavylinenumbers=1
+colo nofrils-solarized
