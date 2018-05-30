@@ -164,7 +164,6 @@ assign [class="^qBittorrent$"] bt
 # Move to primary workspace and launch start up applications
 #
 exec i3 workspace main
-exec termite
 exec i3 workspace bt
 exec qbittorrent
 exec sleep 3
