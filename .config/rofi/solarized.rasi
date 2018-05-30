@@ -6,8 +6,8 @@
  * Copyright: Rasmus Steinke
  ******************************************************************************/
 * {
-    selected-normal-foreground:  rgba ( 129, 147, 150, 1  );
-    foreground:                  rgba ( 238, 232, 213, 1  );
+    selected-normal-foreground:  #d33682 ;
+    foreground:                  rgba ( 131, 148, 150, 1  );
     normal-foreground:           @foreground;
     alternate-normal-background: rgba ( 0  , 43 , 55 , 0  );
     red:                         rgba ( 220, 50 , 47 , 1  );
@@ -19,7 +19,7 @@
     lightbg:                     rgba ( 238, 232, 213, 1  );
     selected-active-foreground:  rgba ( 0  , 142, 212, 1  );
     alternate-active-background: rgba ( 0  , 43  , 55, 0  );
-    background:                  rgba ( 0  , 43  , 55, 0.5);
+    background:                  rgba ( 0  , 43  , 55, 0.7);
     bordercolor:                 rgba ( 0  , 43  , 55, 1  );
     alternate-normal-foreground: @foreground;
     normal-background:           rgba ( 0  , 43 , 55 , 0  );
@@ -39,8 +39,9 @@
 #window {
     background-color: @background;
     border:           0;
-    padding:          450;
+    padding:          100;
     width:            100%;
+    height:           100%;
     font:             "scientifica 8";
 }
 #mainbox {
