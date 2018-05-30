@@ -32,6 +32,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'sjl/gundo.vim'
 Plug 'alvierahman90/nofrils'
+Plug 'jamestomasino/vim-conceal'
 call plug#end()
 
 let NERDTreeShowHidden=0
