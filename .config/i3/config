@@ -109,6 +109,8 @@ for_window [title="^.*noborder.*"] border pixel 0
 # rofi
 #
 bindsym $mod+d exec rofi-preconf window
+bindsym $mod+p exec /home/alvie/bin/rofi_scripts/rofi-emoji.sh
+bindsym $mod+Shift+p exec /home/alvie/bin/rofi_scripts/rofi-iso8859-1.py
 bindsym $mod+q exec rofi-preconf run
 bindsym $mod+Ctrl+q exec rofi-pass
 
