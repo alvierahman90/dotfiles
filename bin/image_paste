@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+import argparse
+from PIL import Image
+import os
+import glob
+
+
+def get_latest_screenshot():
+    list_of_files = glob.glob(os.path.expanduser("~/Pictures/Screenshot*"))
+    latest_file = max(list_of_files, key=os.path.getctime)
+    return latest_file
+
+
+def get_latest_rofi():
+    list_of_files = glob.glob(os.path.expanduser("~/Pictures/rofi*"))
+    latest_file = max(list_of_files, key=os.path.getctime)
+    return latest_file
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("new", default="output.png")
+    parser.add_argument("-b", "--background", default=get_latest_screenshot())
+    parser.add_argument("-f", "--foreground", default=get_latest_rofi())
+    args = parser.parse_args()
+
+    foreground = Image.open(args.foreground)
+    background = Image.open(args.background)
+
+    background.paste(foreground, (0, 0), foreground)
+    background.save(args.new)
+
+
+if __name__ == "__main__":
+    main()
