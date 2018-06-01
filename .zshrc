@@ -25,7 +25,7 @@ then
 	alias config='/usr/bin/git --git-dir=/home/alvie/Documents/projects/dotfiles.git --work-tree=/home/alvie'
 fi
 
-if [ "$HOST" = "webserverPi" ]
+if [ "$HOST" = "pi" ]
 then
 	alias config='/usr/bin/git --git-dir=/root/dotfiles.git --work-tree=/root'
 fi
