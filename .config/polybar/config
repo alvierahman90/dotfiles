@@ -49,7 +49,7 @@ font-0 = scientifica
 font-1 = ${root.font-0}
 font-2 = ${root.font-0}
 
-modules-left = music 
+modules-left = music twitch
 modules-center = xwindow
 modules-right = pulseaudio date
 module-padding = 0
@@ -118,3 +118,8 @@ type = internal/pulseaudio
 format-volume = <label-volume>
 label-muted = muted
 
+[module/twitch]
+type = custom/script
+exec = ~/.config/polybar/polybar-twitch.py
+format = live on Twitch: <label>
+interval = 300
