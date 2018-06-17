@@ -14,8 +14,6 @@ then
 	cat ~/.zpool.status
 	echo ""
 	cat ~/.zpool.list
-	echo ""
-	echo "root drive: Using $(df | grep -i /$ | cut -d ' ' -f 21) leaving $(df | grep -i /$ | cut -d ' ' -f 19) free."
 
 	echo ""
 	echo ""
