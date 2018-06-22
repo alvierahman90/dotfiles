@@ -35,6 +35,7 @@ Plug 'alvierahman90/nofrils'
 Plug 'jamestomasino/vim-conceal'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'tpope/vim-eunuch'
 call plug#end()
 
 let NERDTreeShowHidden=0
