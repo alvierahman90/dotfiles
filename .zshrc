@@ -34,3 +34,4 @@ config config --local status.showUntrackedFiles no
 
 
 alias uarpi="ssh pi 'cd /home/alvie/holdon-bot; git pull; reboot; exit'"
+alias xo="xdg-open"
