@@ -19,6 +19,5 @@ case $1 in
 		/home/alvie/.apps/Discord/Discord
 		;;
 	*)
-		discord_update
 		/home/alvie/.apps/Discord/Discord
 esac
