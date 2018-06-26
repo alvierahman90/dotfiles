@@ -13,6 +13,7 @@ application/x-extension-shtml=firefox.desktop
 application/xhtml+xml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
+text/x-arduino=arduino-arduinoide.desktop
 
 [Added Associations]
 application/x-compressed-tar=org.gnome.FileRoller.desktop;org.gnome.Nautilus.desktop;
@@ -40,3 +41,4 @@ application/x-extension-xht=firefox.desktop;
 application/x-raw-disk-image=gnome-disk-image-mounter.desktop;
 video/mp4=vlc.desktop;
 application/vnd.rar=org.gnome.FileRoller.desktop;
+application/x-bittorrent=qbittorrent.desktop;
