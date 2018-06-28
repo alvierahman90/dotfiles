@@ -36,6 +36,8 @@ Plug 'jamestomasino/vim-conceal'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'tpope/vim-eunuch'
+Plug 'dbeniamine/cheat.sh-vim'
+Plug 'rhysd/clever-f.vim'
 call plug#end()
 
 let NERDTreeShowHidden=0
@@ -60,6 +62,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['pylint']
 
 
 let g:nofrils_alt_heavylinenumbers=1
