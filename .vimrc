@@ -37,7 +37,10 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'tpope/vim-eunuch'
 Plug 'dbeniamine/cheat.sh-vim'
-Plug 'rhysd/clever-f.vim'
+" Plug 'rhysd/clever-f.vim'
+Plug 'machakann/vim-sandwich'
+Plug 'tpope/vim-abolish'
+Plug 'justinmk/vim-sneak'
 call plug#end()
 
 let NERDTreeShowHidden=0
@@ -97,3 +100,6 @@ set statusline+=%c
 set statusline+=\ ·\ 
 set statusline+=[%{&fileencoding?&fileencoding:&encoding}]
 set statusline+=\[%{&fileformat}\] 
+
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
