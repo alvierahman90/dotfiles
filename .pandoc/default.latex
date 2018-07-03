@@ -327,7 +327,7 @@ $endif$
 \usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{inconsolata}
-%\usepackage{datetime}
+\usepackage{datetime}
 % \setlength{\parindent}{1in} % Default is 15pt.
 
 \graphicspath{{images/}}
