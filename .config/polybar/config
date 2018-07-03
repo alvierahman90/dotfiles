@@ -9,7 +9,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #0000000
+background = #00000000
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #fff
@@ -31,7 +31,7 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
+line-size = 0
 line-color = #f00
 
 border-size = 0
@@ -49,14 +49,53 @@ font-0 = scientifica
 font-1 = ${root.font-0}
 font-2 = ${root.font-0}
 
-modules-left = music twitch
-modules-center = xwindow
-modules-right = pulseaudio date
+modules-left = pulseaudio music twitch
+modules-center = date
+modules-right = 
 module-padding = 0
 
 tray-position = right
 tray-padding = 10
 tray-transparent = false
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+[bar/lower]
+bottom=false
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 10
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #fff
+
+border-size = 0
+border-color = #fff
+
+padding-left = 5
+padding-right = 0
+
+
+module-margin-left = 5
+module-margin-right = 0
+
+;font-0 = SFNS Display:size=9
+font-0 = scientifica
+font-1 = ${root.font-0}
+font-2 = ${root.font-0}
+
+modules-left = 
+modules-center = xwindow
+modules-right = 
+module-padding = 0
 
 ;wm-restack = bspwm
 ;wm-restack = i3

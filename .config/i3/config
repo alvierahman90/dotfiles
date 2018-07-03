@@ -170,7 +170,7 @@ exec i3 workspace bt
 exec qbittorrent
 exec sleep 3
 exec i3 workspace main
-exec polybar top
+exec polybar top; sleep 0.25; polybar lower
 exec --no-startup-id unclutter -idle 1
 
 focus_follows_mouse no
