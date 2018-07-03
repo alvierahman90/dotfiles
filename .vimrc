@@ -69,7 +69,6 @@ let g:syntastic_python_checkers = ['pylint']
 
 
 let g:nofrils_alt_heavylinenumbers=1
-colo nofrils-solarized
 
 
 " statusline
@@ -103,3 +102,6 @@ set statusline+=\[%{&fileformat}\]
 
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
+
+colo darkblue
+colo solarized
