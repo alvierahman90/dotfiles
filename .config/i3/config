@@ -143,12 +143,11 @@ exec xset -dpms
 #exec cinnamon-screensaver
 bindsym $mod+shift+x exec /home/alvie/bin/lock i3lockfancy
 
-exec redshift 
 
 # i3-gaps
 # 
-#gaps outer 10
-gaps inner 25
+gaps outer 35
+gaps inner 10
 #smart_gaps on
 
 # function keys
@@ -172,6 +171,7 @@ exec sleep 3
 exec i3 workspace main
 exec polybar top; sleep 0.25; polybar lower
 exec --no-startup-id unclutter -idle 1
+exec redshift 
 
 focus_follows_mouse no
 
