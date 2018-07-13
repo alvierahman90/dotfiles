@@ -2,6 +2,16 @@
 
 file="$1"
 
+if [ "$2" == "--silent" ]
+then
+	pandoc \
+		-o $file.pdf \
+		--template "/home/alvie/.pandoc/default.latex" \
+		--quiet \
+		$file
+	exit 0
+fi
+
 echo "Time to render: "
 time \
 	pandoc \
