@@ -116,6 +116,7 @@ bindsym $mod+Ctrl+q exec rofi-pass
 
 # music keybindings
 #
+bindsym $mod+o exec pavucontrol
 bindsym $mod+n exec playerctl next
 bindsym $mod+Shift+n exec playerctl previous
 bindsym $mod+Ctrl+n exec playerctl play-pause
