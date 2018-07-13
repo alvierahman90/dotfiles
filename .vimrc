@@ -41,6 +41,7 @@ Plug 'dbeniamine/cheat.sh-vim'
 Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-abolish'
 Plug 'justinmk/vim-sneak'
+Plug 'tmhedberg/SimpylFold'
 call plug#end()
 
 let NERDTreeShowHidden=0
