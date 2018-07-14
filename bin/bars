@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+polybar top&
+sleep 0.25
+polybar lower&
