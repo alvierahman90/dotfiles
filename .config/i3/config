@@ -159,8 +159,12 @@ bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
 
 workspace_layout tabbed
 
-# Class assigns before autostarting
+focus_follows_mouse no
+
+# Assigning windows
 #
+assign [class="^discord$"] chat
+assign [class="^TelegramDesktop$"] chat
 assign [class="^qBittorrent$"] bt
 
 # Move to primary workspace and launch start up applications
@@ -173,10 +177,3 @@ exec i3 workspace main
 exec bars --startup
 exec --no-startup-id unclutter -idle 1
 exec redshift 
-
-focus_follows_mouse no
-
-# Assigning windows
-#
-assign [class="^discord$"] chat
-assign [class="^TelegramDesktop$"] chat
