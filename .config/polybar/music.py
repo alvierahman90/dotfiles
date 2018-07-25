@@ -42,8 +42,8 @@ def get_album_artist():
 
 def status_symbol():
     if playing():
-        return '>'
-    return '|'
+        return '▶'
+    return '⏸'
 
 
 def blinker(text):
@@ -63,15 +63,11 @@ def main():
         print("no music playing")
         return 0
 
-    if playing():
-        status_message = "{playing} {track} - {artist}".format(
-            playing=status_symbol(),
-            track=get_track(),
-            artist=get_artist())
-    else:
-        status_message = "{playing} {track}".format(
-            playing=status_symbol(),
-            track=get_track())
+    status_message = "{playing} {track} - {artist}".format(
+        playing=status_symbol(),
+        track=get_track(),
+        artist=get_artist())
+
     print(status_message)
     return 0
 
