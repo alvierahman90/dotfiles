@@ -2,7 +2,7 @@
 # font = monofur for Powerline 10
 font = scientifica 8
 mouse_autohide = true
-cursor_shape = underline
+cursor_shape = block
 #size_hints = true
 
 [hints]
@@ -34,13 +34,13 @@ padding = 15
 #color15 = #fdf6e3'
 
 [colors]
-# Base16 Solarized Dark
+# Base16 Solarized Dark buttfucked
 # Author: Ethan Schoonover (http://ethanschoonover.com/solarized)
 
-foreground      = #93a1a1
-foreground_bold = #eee8d5
-cursor          = #eee8d5
-background      = #002b36
+foreground      = #aaaaaa
+foreground_bold = #aaaaaa
+cursor          = #aaaaaa
+background      = #5a3524
 #background = rgba(0, 43, 54, 0.9)
 
 # 16 color space

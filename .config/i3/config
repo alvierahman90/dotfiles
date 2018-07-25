@@ -85,10 +85,10 @@ bindsym $mod+r mode "resize"
 # inactive text color
 # unfocused text color
 #
-set $ac		#cb4b16 
-set $bg		#002b36
-set $tc 	#eee8d5
-set $itc	#586e75
+set $ac		#5a3524
+set $bg		#a14f5e
+set $tc 	#cccccc
+set $itc	#aaaaaa
 set $ubgc     	#dc322f
 
 # window colors

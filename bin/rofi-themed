@@ -2,5 +2,5 @@
 
 rofi \
 	-i \
-	$1 \
-	-theme solarized
+	-theme bananas \
+	$@ \

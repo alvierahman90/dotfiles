@@ -1060,9 +1060,7 @@ for i in chardict:
 
 rofi = Popen(
       args=[
-            'rofi',
-            '-theme',
-            'solarized',
+            'rofi-themed',
             '-dmenu',
             '-i',
             '-p',
