@@ -5,7 +5,7 @@ export VISUAL=/usr/bin/vim
 export BETTER_EXCEPTIONS=1
 export VIMRUNTIME="/usr/share/vim/current"
 
-prompt agnoster
+prompt minimal
 export GPG_TTY=$(tty)
 
 # status stuff for ZFS, desktop only
