@@ -1,2 +1,2 @@
 #!/bin/bash
-ps aux | grep -i $1 | head -n -2
+ps aux | grep -i $1 
