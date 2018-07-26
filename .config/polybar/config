@@ -51,7 +51,7 @@ font-2 = ${root.font-0}
 
 modules-left = pulseaudio music
 modules-center = date
-modules-right = twitch
+modules-right = twitch quotes
 module-padding = 0
 
 tray-position = right
