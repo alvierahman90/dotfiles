@@ -104,5 +104,26 @@ set statusline+=\[%{&fileformat}\]
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 
-colo darkblue
-colo solarized
+" Special
+let wallpaper  = "/home/alvie/Documents/wallpapers/planet_64.png"
+let background = "#311a38"
+let foreground = "#bbbbd4"
+let cursor     = "#bbbbd4"
+
+" Colors
+let color0  = "#311a38"
+let color1  = "#C63E81"
+let color2  = "#A25696"
+let color3  = "#CB4484"
+let color4  = "#E44684"
+let color5  = "#7884BC"
+let color6  = "#7181C0"
+let color7  = "#bbbbd4"
+let color8  = "#828294"
+let color9  = "#C63E81"
+let color10 = "#A25696"
+let color11 = "#CB4484"
+let color12 = "#E44684"
+let color13 = "#7884BC"
+let color14 = "#7181C0"
+let color15 = "#bbbbd4"

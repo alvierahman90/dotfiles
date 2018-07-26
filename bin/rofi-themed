@@ -2,5 +2,5 @@
 
 rofi \
 	-i \
-	-theme bananas \
+	-theme planet_64 \
 	$@ \

@@ -4,7 +4,7 @@
 
 # rofi command. Make sure to have "$@" as last argument
 _rofi () {
-    rofi -theme bananas -i -no-auto-select "$@"
+    rofi -theme planet_64 -i -no-auto-select "$@"
 }
 
 # image viewer to display qrcode of selected entry

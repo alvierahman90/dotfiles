@@ -85,8 +85,8 @@ bindsym $mod+r mode "resize"
 # inactive text color
 # unfocused text color
 #
-set $bg		#5a3524
-set $ac		#a14f5e
+set $bg		#452656
+set $ac		#af4584
 set $tc 	#cccccc
 set $itc	#aaaaaa
 set $ubgc     	#dc322f

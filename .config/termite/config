@@ -40,8 +40,8 @@ padding = 15
 foreground      = #aaaaaa
 foreground_bold = #aaaaaa
 cursor          = #aaaaaa
-background      = #5a3524
-#background = rgba(0, 43, 54, 0.9)
+#background      = #5a3524
+background = #452656
 
 # 16 color space
 
