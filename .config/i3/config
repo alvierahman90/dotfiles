@@ -146,7 +146,7 @@ bindsym $mod+shift+x exec /home/alvie/bin/lock i3lockfancy
 
 # i3-gaps
 # 
-gaps outer 35
+gaps outer 10
 gaps inner 10
 #smart_gaps on
 
