@@ -17,7 +17,7 @@ import argparse
 import subprocess
 import requests
 
-LOG_FILE = os.path.expanduser("~/.autcat.py.log")
+LOG_FILE = os.path.expanduser("~/.autocat.py.log")
 BASE = os.path.expanduser("~/Downloads/Torrents/")
 
 
