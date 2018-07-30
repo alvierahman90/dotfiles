@@ -27,6 +27,7 @@ def main():
     args = parse_args()
     print("main: starting at " + iso_time())
     print("main: args.file: " + args.file)
+    print("main: args.category: " + args.category)
     if args.dry_run:
         print("main: DRY RUN: No linking will happen")
 
