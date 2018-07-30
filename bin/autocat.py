@@ -12,38 +12,55 @@ import re
 import os
 import sys
 import json
-import time
+import datetime
 import argparse
 import subprocess
 import requests
 
-LOG_FILE = os.path.expanduser("~/.autocat.py.log")
 BASE = os.path.expanduser("~/Downloads/Torrents/")
 
 
 def main():
+    """
+    Entry point for script
+    """
     args = parse_args()
-    file_name = os.path.split(args.file)[1]
+    print("main: starting at " + iso_time())
+    print("main: args.file: " + args.file)
+    if args.dry_run:
+        print("main: DRY RUN: No linking will happen")
+
+    if args.file[-1] == '/':
+        file_name = os.path.split(args.file[:-1])[1]
+    else:
+        file_name = os.path.split(args.file)[1]
+
+    if file_name == "":
+        file_name = os.path.split(file_name)[1]
+    print("main: file_name" + file_name)
     show_name = get_show_name(file_name)
 
     if args.category == "TV FS":
-        print(args.file)
-        print(file_name)
-        path = generate_path(show_name, args.category) 
+        path = generate_path(show_name, args.category)
         if not os.path.isdir(path):
-            subprocess.run(['mkdir',path])
+            subprocess.run(['mkdir', path])
         return link(args.file,
-                    generate_path(show_name, args.category) + file_name)
+                    generate_path(show_name, args.category) + file_name, dry_run=args.dry_run)
     elif args.category in ["Movie", "Documentary"]:
         return link(args.file,
-                    generate_path(file_name, args.category))
+                    generate_path(file_name, args.category), dry_run=args.dry_run)
     elif args.category == "TV Ep":
+        # TODO implement automagic linking of single episodes
+        print("main: single episodes not implemented yet")
+        return 1
+    else:
+        print("main: this category has not been implemented yet")
         return 1
 
 
 def parse_args():
     """
-    parse command line arguments for script
+    Parse command line arguments for script
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("file")
@@ -54,14 +71,14 @@ def parse_args():
 
 def get_show_name(file_name):
     """
-    get name of a movie to tv show from imdb
+    Get name of a movie to tv show from imdb
     """
 
     # clean file name before using it in the api request
     file_name = file_name.replace('.', ' ')
-    print(file_name)
+    print("get_show_name: file_name.replace('.', ' '): " + file_name)
     file_name = re.split("S[0-9][0-9]", file_name)[0]
-    print(file_name)
+    print("get_show_name: re.split(\"S[0-9][0-9]\", file_name)[0]: " + file_name)
 
     # send and process the request
     url = "https://sg.media-imdb.com/suggests/"
@@ -69,7 +86,9 @@ def get_show_name(file_name):
     url += file_name
     url += ".json"
     response = requests.get(url)
+    print("get_show_name: =====IMDB RESPONSE START=====")
     print(response.text)
+    print("=====IMDB RESPONSE END=====")
     data_json = response.text.split("(")[1].split(")")[0]
 
     return json.loads(data_json)['d'][0]['l']
@@ -77,24 +96,20 @@ def get_show_name(file_name):
 
 def link(original, new, dry_run=False):
     """
-    create soft relative link
+    Create soft relative link
     """
     command = ['ln', '-rs', original, new]
     log_text = '[' + iso_time() + '] ' + " ".join(command)
-    with open(LOG_FILE, "a+") as file:
-        file.write(log_text)
-        file.write('\n')
-    print(log_text)
+    print("link: " + log_text)
 
     if dry_run:
-        print(log_text)
         return 0
     return subprocess.run(command).returncode
 
 
 def generate_path(show_name, category):
     """
-    returns the possibly base path
+    Returns the possibly base path
     """
 
     show_name = '.'.join(show_name.split(' '))
@@ -112,25 +127,9 @@ def generate_path(show_name, category):
 
 def iso_time():
     """
-    returns time in iso8601 string
+    Returns time in iso8601 string
     """
-    def pad(var, padding=2):
-        """
-        returns string with padding
-        """
-        return str(var).zfill(padding)
-    t = time.gmtime()
-    iso = pad(t.tm_year, padding=4) + \
-        '-'+pad(t.tm_mon) + \
-        '-'+pad(t.tm_mday) + \
-        'T' + \
-        pad(t.tm_hour) + \
-        ':' + \
-        pad(t.tm_min) + \
-        ':' + \
-        pad(t.tm_sec)
-
-    return iso
+    return datetime.datetime.now().isoformat()
 
 
 if __name__ == "__main__":
