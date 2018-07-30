@@ -38,7 +38,7 @@ def main():
 
     if file_name == "":
         file_name = os.path.split(file_name)[1]
-    print("main: file_name" + file_name)
+    print("main: file_name: " + file_name)
     show_name = get_show_name(file_name)
 
     if args.category == "TV FS":
@@ -90,7 +90,8 @@ def get_show_name(file_name):
     print("get_show_name: =====IMDB RESPONSE START=====")
     print(response.text)
     print("=====IMDB RESPONSE END=====")
-    data_json = response.text.split("(")[1].split(")")[0]
+    data_json = re.split("\)$", "(".join(response.text.split("(")[1:]))[0]
+    print("get_show_name: data_json: " + data_json)
 
     return json.loads(data_json)['d'][0]['l']
 
