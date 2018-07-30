@@ -29,6 +29,9 @@ def main():
     if args.category == "TV FS":
         print(args.file)
         print(file_name)
+        path = generate_path(show_name, args.category) 
+        if not os.path.isdir(path):
+            subprocess.run(['mkdir',path])
         return link(args.file,
                     generate_path(show_name, args.category) + file_name)
     elif args.category in ["Movie", "Documentary"]:
