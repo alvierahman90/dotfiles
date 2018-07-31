@@ -90,8 +90,10 @@ def get_show_name(file_name):
     print("get_show_name: =====IMDB RESPONSE START=====")
     print(response.text)
     print("=====IMDB RESPONSE END=====")
-    data_json = re.split("\)$", "(".join(response.text.split("(")[1:]))[0]
+    data_json = re.split("\\)$", "(".join(response.text.split("(")[1:]))[0]
+    print("get_show_name: =====data_json START=====")
     print("get_show_name: data_json: " + data_json)
+    print("=====data_json END=====")
 
     return json.loads(data_json)['d'][0]['l']
 
