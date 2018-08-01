@@ -26,7 +26,7 @@ if [ "$HOST" = "desktot" ]
 then
 	cat ~/.zpool.status
 	echo ""
-	echo $Using $(zpool_info 7 2) of storage, leaving $(zpool_info 4 2) free
+	echo Using $(zpool_info 7 2) of storage, leaving $(zpool_info 4 2) free
 fi
 
 # dotfile management 
