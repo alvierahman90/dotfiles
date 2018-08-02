@@ -17,16 +17,27 @@ function zpool_info {
 	cat .zpool.list | \
 		tail -n +2 | \
 		sed -e "s/  */ /g" | \
-		cut -d ' ' -f $1 | \
-		sed -n "$2p"
+		grep '^storage' | \
+		cut -d ' ' -f $1 
 }
 
-# status stuff for ZFS, desktop only
+function zpool_info_time {
+	cat .zpool.list | \
+		head -n 1
+}
+
+function disk_info {
+	df | sed -e 's/  */ /g' | grep $1$ | cut -d ' ' -f $2
+}
+
+# status stuff for ZFS, for computer named 'desktot' only
 if [ "$HOST" = "desktot" ]
 then
 	cat ~/.zpool.status
 	echo ""
-	echo Using $(zpool_info 7 2) of storage, leaving $(zpool_info 4 2) free
+	echo "Using $(zpool_info 7 2) of zfs pool storage, leaving $(zpool_info 4 2) free (as of $(zpool_info_time))"
+	echo "Using $(disk_info /home 5) of /home, leaving $(disk_info /home 4) free"
+	echo "Using $(disk_info / 5) of /, leaving $(disk_info / 4) free"
 fi
 
 # dotfile management 
