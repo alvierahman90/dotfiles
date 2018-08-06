@@ -39,9 +39,9 @@ def main():
     if file_name == "":
         file_name = os.path.split(file_name)[1]
     log("main: file_name: " + file_name)
-    show_name = get_show_name(file_name)
 
     if args.category == "TV FS":
+        show_name = get_show_name(file_name)
         path = generate_path(show_name, args.category)
         if not os.path.isdir(path):
             subprocess.run(['mkdir', path])
