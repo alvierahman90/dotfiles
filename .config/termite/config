@@ -1,6 +1,6 @@
 [options]
 # font = monofur for Powerline 10
-font = scientifica 8
+font = Hack 10
 mouse_autohide = true
 cursor_shape = block
 #size_hints = true
