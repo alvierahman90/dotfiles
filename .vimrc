@@ -23,7 +23,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
-Plug 'spolu/dwm.vim'
+"Plug 'spolu/dwm.vim'
 Plug 'vim-scripts/CycleColor'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe'
@@ -33,7 +33,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'sjl/gundo.vim'
 Plug 'alvierahman90/nofrils'
 Plug 'jamestomasino/vim-conceal'
-Plug 'vim-pandoc/vim-pandoc'
+"Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'tpope/vim-eunuch'
 Plug 'dbeniamine/cheat.sh-vim'
@@ -41,8 +41,12 @@ Plug 'dbeniamine/cheat.sh-vim'
 Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-abolish'
 Plug 'justinmk/vim-sneak'
-Plug 'tmhedberg/SimpylFold'
+"Plug 'tmhedberg/SimpylFold'
 call plug#end()
+
+augroup pandoc_syntax
+	au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END
 
 let NERDTreeShowHidden=0
 
@@ -103,6 +107,9 @@ set statusline+=\[%{&fileformat}\]
 
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
+
+autocmd filetype markdown inoremap ;c <Esc>:w<Enter>:!render --silent % & <Enter><Enter>li
+autocmd filetype markdown map ;c :w<Enter>:!render --silent % & <Enter><Enter>
 
 " Special
 let wallpaper  = "/home/alvie/Documents/wallpapers/planet_64.png"
