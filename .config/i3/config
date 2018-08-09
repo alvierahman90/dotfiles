@@ -116,9 +116,9 @@ bindsym $mod+Ctrl+q exec rofi-pass
 # music keybindings
 #
 bindsym $mod+o exec pavucontrol
-bindsym $mod+n exec playerctl next
-bindsym $mod+Shift+n exec playerctl previous
-bindsym $mod+Ctrl+n exec playerctl play-pause
+bindsym $mod+n exec playerctl next -p cmus
+bindsym $mod+Shift+n exec playerctl previous -p cmus
+bindsym $mod+Ctrl+n exec playerctl play-pause -p cmus
 
 hide_edge_borders both
 exec  compton --config /home/alvie/.config/compton.conf 
