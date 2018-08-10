@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+
+source ~/.tgupdate_secrets
+
+text="$HOST - $(date)
+$1"
+
+if [ "$2" == "silent" ]
+then
+	notify="true"
+else
+	notify="false"
+fi
+
+curl \
+	"https://api.telegram.org/bot$bot_id/sendMessage?chat_id=$chat_id&disable_notification=$notify" \
+	--data-urlencode "text=$text" 
