@@ -66,11 +66,11 @@ def status_symbol():
     Returns a symbol based on if music is playing
     """
     if playing():
-        return '▶'
-    return '⏸'
+        return '>'
+    return '|'
 
 
-def blinker(text):
+def blink(text):
     """
     Flashes text given once a second
     """
