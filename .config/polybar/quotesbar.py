@@ -6,7 +6,7 @@ import time
 
 SPEED = 5
 TWEETERS = ['billwurtz', 'deiuge']
-MAX_LENGTH = 100
+MAX_LENGTH = 80
 
 
 def auth_twitter():
