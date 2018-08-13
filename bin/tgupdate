@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-source ~/.tgupdate_secrets
+source /home/alvie/.tgupdate_secrets
 
 text="$HOST - $(date)
 $1"
