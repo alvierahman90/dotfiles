@@ -59,8 +59,6 @@ let g:dwm_master_pane_width=84
 
 nmap <1> :NERDTreeToggle<CR>
 
-let &colorcolumn=80
-highlight ColorColumn ctermbg=1 
 
 hi clear SpellBad
 hi SpellBad cterm=underline
@@ -108,7 +106,7 @@ set statusline+=\[%{&fileformat}\]
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 
-autocmd filetype markdown inoremap ;c <Esc>:w<Enter>:!render --silent % & <Enter><Enter>li
+autocmd filetype markdown inoremap ;c <Esc>:w<Enter>:!render --silent % & <Enter><Enter>a
 autocmd filetype markdown map ;c :w<Enter>:!render --silent % & <Enter><Enter>
 
 " Special
