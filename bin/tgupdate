@@ -3,7 +3,7 @@
 
 source /home/alvie/.tgupdate_secrets
 
-text="$HOST - $(date)
+text="$(cat /proc/sys/kernel/hostname) - $(date)
 $1"
 
 if [ "$2" == "silent" ]
