@@ -16,3 +16,4 @@ fi
 curl \
 	"https://api.telegram.org/bot$bot_id/sendMessage?chat_id=$chat_id&disable_notification=$notify" \
 	--data-urlencode "text=$text" 
+echo ''
