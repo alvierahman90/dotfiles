@@ -29,7 +29,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-markdown'
 Plug 'sjl/gundo.vim'
 Plug 'alvierahman90/nofrils'
 Plug 'jamestomasino/vim-conceal'
@@ -45,10 +45,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'rhysd/vim-grammarous'
 call plug#end()
 
-augroup pandoc_syntax
-	au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
-augroup END
-
+set nofoldenable
 let NERDTreeShowHidden=0
 
 set laststatus=2
