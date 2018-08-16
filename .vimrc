@@ -109,6 +109,8 @@ autocmd filetype markdown map ;c :w<Enter>:!render --silent % & <Enter><Enter>
 autocmd filetype markdown nmap <F4> <Plug>(grammarous-move-to-next-error)
 autocmd filetype markdown nmap ;g :GrammarousCheck<Enter>
 
+let g:ycm_filetype_blacklist = {}
+
 " Special
 let wallpaper  = "/home/alvie/Documents/wallpapers/planet_64.png"
 let background = "#311a38"
