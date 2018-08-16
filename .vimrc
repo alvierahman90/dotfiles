@@ -42,6 +42,7 @@ Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-abolish'
 Plug 'justinmk/vim-sneak'
 "Plug 'tmhedberg/SimpylFold'
+Plug 'rhysd/vim-grammarous'
 call plug#end()
 
 augroup pandoc_syntax
@@ -108,6 +109,8 @@ map F <Plug>Sneak_S
 
 autocmd filetype markdown inoremap ;c <Esc>:w<Enter>:!render --silent % & <Enter><Enter>a
 autocmd filetype markdown map ;c :w<Enter>:!render --silent % & <Enter><Enter>
+autocmd filetype markdown nmap <F4> <Plug>(grammarous-move-to-next-error)
+autocmd filetype markdown nmap ;g :GrammarousCheck<Enter>
 
 " Special
 let wallpaper  = "/home/alvie/Documents/wallpapers/planet_64.png"
