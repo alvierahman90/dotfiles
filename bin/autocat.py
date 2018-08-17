@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-
-# A program to automatically action on certain categories of torrents
-# 1. Change BASE
-# 2. Set up torrent client
-#     - The arguments are: ./script CONTENT-PATH CATEGORY
-#     qBittorrent setup:
-#         Downloads > Run external script:
-#         LOCATION_OF_SCRIPT/autocat.py %F %L
+"""
+A program to automatically action on certain categories of torrents
+1. Change BASE
+2. Set up torrent client
+    - The arguments are: ./script CONTENT-PATH CATEGORY
+    - qBittorrent setup:
+        Downloads > Run external script:
+        LOCATION_OF_SCRIPT/autocat.py %F %L
+"""
 
 import re
 import os
@@ -25,11 +26,10 @@ def main():
     Entry point for script
     """
     args = parse_args()
-    log("main: starting at " + iso_time())
-    log("main: args.file: " + args.file)
-    log("main: args.category: " + args.category)
+    logging.info("args.file = '{}'".format(args.file))
+    logging.info("args.category = '{}'".format(args.category))
     if args.dry_run:
-        log("main: DRY RUN: No linking will happen")
+        logging.info("DRY RUN - No linking will happen")
 
     if args.file[-1] == '/':
         file_name = os.path.split(args.file[:-1])[1]
@@ -38,7 +38,7 @@ def main():
 
     if file_name == "":
         file_name = os.path.split(file_name)[1]
-    log("main: file_name: " + file_name)
+    logging.info("file_name = '{}'".format(file_name))
 
     if args.category == "TV FS":
         show_name = get_show_name(file_name)
@@ -52,10 +52,10 @@ def main():
                     generate_path(file_name, args.category), dry_run=args.dry_run)
     elif args.category == "TV Ep":
         # TODO implement automagic linking of single episodes
-        log("main: single episodes not implemented yet")
+        logging.info("single episodes not implemented yet")
         return 1
     else:
-        log("main: this category has not been implemented yet")
+        logging.info("this category has not been implemented yet")
         return 1
 
 
@@ -77,9 +77,9 @@ def get_show_name(file_name):
 
     # clean file name before using it in the api request
     file_name = file_name.replace('.', ' ')
-    log("get_show_name: file_name.replace('.', ' '): " + file_name)
+    logging.info("file_name.replace('.', ' '): " + file_name)
     file_name = re.split("S[0-9][0-9]", file_name)[0]
-    log("get_show_name: re.split(\"S[0-9][0-9]\", file_name)[0]: " + file_name)
+    logging.info("re.split(\"S[0-9][0-9]\", file_name)[0]: " + file_name)
 
     # send and process the request
     url = "https://sg.media-imdb.com/suggests/"
@@ -87,13 +87,13 @@ def get_show_name(file_name):
     url += file_name
     url += ".json"
     response = requests.get(url)
-    log("get_show_name: =====IMDB RESPONSE START=====")
-    log(response.text)
-    log("=====IMDB RESPONSE END=====")
+    logging.info("=====IMDB RESPONSE START=====")
+    logging.info(response.text)
+    logging.info("=====IMDB RESPONSE END=====")
     data_json = re.split("\\)$", "(".join(response.text.split("(")[1:]))[0]
-    log("get_show_name: =====data_json START=====")
-    log("get_show_name: data_json: " + data_json)
-    log("=====data_json END=====")
+    logging.info("=====data_json START=====")
+    logging.info("" + data_json)
+    logging.info("=====data_json END=====")
 
     return json.loads(data_json)['d'][0]['l']
 
@@ -103,7 +103,7 @@ def link(original, new, dry_run=False):
     Create soft relative link
     """
     command = ['ln', '-rs', original, new]
-    log("link: " + " ".join(command))
+    logging.info(" ".join(command))
 
     if dry_run:
         return 0
@@ -134,9 +134,11 @@ def iso_time():
     """
     return datetime.datetime.now().isoformat()
 
-def log(text):
-    print("[" + iso_time() + "] "  + text)
-
 
 if __name__ == "__main__":
+    import logging
+    logging.basicConfig(format='[%(asctime)s][%(levelname)s][%(funcName)s()]'
+                               '%(message)s',
+                        filename=os.path.expanduser('~/.autocat.py.log'),
+                        level=logging.INFO)
     sys.exit(main())
