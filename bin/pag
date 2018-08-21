@@ -1,2 +1,0 @@
-#!/bin/bash
-ps aux | grep -i $1 
