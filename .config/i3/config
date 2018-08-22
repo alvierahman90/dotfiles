@@ -178,3 +178,7 @@ exec --no-startup-id unclutter -idle 1
 exec redshift 
 exec telegram
 exec discord
+
+# Fucking Firefox, man
+#
+bindsym Ctrl+q exec ~/.config/i3/firefox-ctrl-q-workaround/noctrlq.sh
