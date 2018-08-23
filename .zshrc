@@ -103,3 +103,5 @@ alias uarpi="ssh pi 'cd /home/alvie/holdon-bot; git pull; reboot; exit'"
 alias xo="xdg-open"
 alias pag="ps aux | grep -i"
 echo "${NC}"
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

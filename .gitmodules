@@ -1,3 +1,6 @@
 [submodule ".config/i3/firefox-ctrl-q-workaround"]
 	path = .config/i3/firefox-ctrl-q-workaround
 	url = /.config/i3/firefox-ctrl-q-workaround
+[submodule ".zsh/zsh-autosuggestions"]
+	path = .zsh/zsh-autosuggestions
+	url = /.zsh/zsh-autosuggestions
