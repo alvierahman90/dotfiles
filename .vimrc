@@ -43,6 +43,7 @@ Plug 'tpope/vim-abolish'
 Plug 'justinmk/vim-sneak'
 "Plug 'tmhedberg/SimpylFold'
 Plug 'rhysd/vim-grammarous'
+Plug 'markonm/traces.vim'
 call plug#end()
 
 set nofoldenable
