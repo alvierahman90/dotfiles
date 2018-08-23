@@ -64,3 +64,4 @@ headers = {'Client-ID': 'l62zpdkfreec6bbsoffjw0lyjtiwkc',
 if __name__ == "__main__":
     userID = getID(headers, username)
     onlineChans = getOnlineChans(getFollowedChans(headers, userID), headers)
+    print(' ')

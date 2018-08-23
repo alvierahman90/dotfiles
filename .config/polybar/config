@@ -160,5 +160,4 @@ label-muted = muted
 [module/twitch]
 type = custom/script
 exec = ~/.config/polybar/polybar-twitch.py
-format = live on Twitch: <label>
 interval = 300
