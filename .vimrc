@@ -107,6 +107,8 @@ map F <Plug>Sneak_S
 
 autocmd filetype markdown inoremap ;c <Esc>:w<Enter>:!render --silent % & <Enter><Enter>a
 autocmd filetype markdown map ;c :w<Enter>:!render --silent % & <Enter><Enter>
+autocmd filetype markdown map ;z :!zathura %.pdf & <Enter><Enter>
+autocmd filetype markdown inoremap ;z <Esc> :!zathura %.pdf &<Enter><Enter>a
 autocmd filetype markdown nmap <F4> <Plug>(grammarous-move-to-next-error)
 autocmd filetype markdown nmap ;g :GrammarousCheck<Enter>
 
