@@ -28,8 +28,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 "Plug 'spolu/dwm.vim'
-Plug 'vim-scripts/CycleColor'
-Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
 Plug 'godlygeek/tabular'
@@ -153,3 +151,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" CtrlP shortcuts
+nmap <leader>p :CtrlPMixed<Enter>
