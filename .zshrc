@@ -105,3 +105,4 @@ alias pag="ps aux | grep -i"
 echo "${NC}"
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^ ' autosuggest-accept
