@@ -32,22 +32,17 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-markdown'
-Plug 'sjl/gundo.vim'
 Plug 'alvierahman90/nofrils'
 Plug 'jamestomasino/vim-conceal'
 "Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'tpope/vim-eunuch'
-Plug 'dbeniamine/cheat.sh-vim'
 " Plug 'rhysd/clever-f.vim'
 Plug 'machakann/vim-sandwich'
-Plug 'tpope/vim-abolish'
 Plug 'justinmk/vim-sneak'
 "Plug 'tmhedberg/SimpylFold'
 Plug 'rhysd/vim-grammarous'
 Plug 'markonm/traces.vim'
 call plug#end()
-
 
 " Spelling mistakes 
 set spell
