@@ -57,6 +57,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pylint']
 
+let g:syntastic_error_symbol = 'E'
+let g:syntastic_style_error_symbol = 'S'
+let g:syntastic_warning_symbol = 'W'
+let g:syntastic_style_warning_symbol = 's'
+
 " " Toggling Syntastic's Location pane thingymabob
 " " https://stackoverflow.com/questions/17512794/toggle-error-location-panel-in-syntastic/17515778#17515778
 function! ToggleErrors()
