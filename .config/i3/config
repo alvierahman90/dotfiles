@@ -113,12 +113,6 @@ bindsym $mod+Shift+p exec /home/alvie/bin/rofi_scripts/rofi-iso8859-1.py
 bindsym $mod+q exec rofi-preconf run
 bindsym $mod+Ctrl+q exec rofi-pass
 
-# music keybindings
-#
-bindsym $mod+o exec pavucontrol
-bindsym $mod+n exec playerctl next -p cmus
-bindsym $mod+Shift+n exec playerctl previous -p cmus
-bindsym $mod+Ctrl+n exec playerctl play-pause -p cmus
 
 hide_edge_borders both
 exec  compton --config /home/alvie/.config/compton.conf 
@@ -150,11 +144,21 @@ gaps outer 10
 gaps inner 10
 #smart_gaps on
 
-# function keys
+# Music keybindings
+#
+bindsym $mod+o exec pavucontrol
+# Volume keys
 #
 bindsym XF86AudioMute exec amixer sset 'Master' toggle
 bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
 bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
+
+# Media player controls
+#
+bindsym XF86AudioPlay exec playerctl -p cmus play-pause
+bindsym XF86AudioPause exec playerctl -p cmus pause
+bindsym XF86AudioNext exec playerctl -p cmus next
+bindsym XF86AudioPrev exec playerctl -p cmus previous
 
 workspace_layout tabbed
 
