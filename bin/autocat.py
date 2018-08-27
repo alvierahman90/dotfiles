@@ -78,7 +78,7 @@ def get_show_name(file_name):
     # clean file name before using it in the api request
     file_name = file_name.replace('.', ' ')
     logging.info("file_name.replace('.', ' '): " + file_name)
-    file_name = re.split("S[0-9][0-9]", file_name)[0]
+    file_name = re.split("[sS][0-9][0-9]", file_name)[0]
     logging.info("re.split(\"S[0-9][0-9]\", file_name)[0]: " + file_name)
 
     # send and process the request
