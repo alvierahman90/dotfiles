@@ -156,4 +156,4 @@ nnoremap <C-H> <C-W><C-H>
 nmap <leader>p :CtrlPMixed<Enter>
 
 " Esc map
-imap <Space><Space> <Esc>
+imap ii <Esc>
