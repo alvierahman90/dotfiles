@@ -154,3 +154,6 @@ nnoremap <C-H> <C-W><C-H>
 
 " CtrlP shortcuts
 nmap <leader>p :CtrlPMixed<Enter>
+
+" Esc map
+imap <Space><Space> <Esc>
