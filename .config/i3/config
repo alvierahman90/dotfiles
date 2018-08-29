@@ -120,7 +120,8 @@ exec  compton --config /home/alvie/.config/compton.conf
 # screenshot keybindings
 #
 bindsym --release Print exec ss
-bindsym --release shift+Print exec ss selection
+bindsym --release shift+Print exec ss select
+bindsym --release Ctrl+Print exec ss focused
 
 # set wallpaper
 #

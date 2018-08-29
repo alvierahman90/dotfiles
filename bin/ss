@@ -1,11 +1,14 @@
 #!/bin/bash
-base_command="scrot"
 options=""
 filename="/home/alvie/Pictures/Screenshot-$(date --iso-8601=ns).png"
 
-if [ "$1" == "selection" ]
+if [ "$1" == "select" ]
 then
-	options="$options -s"
+	options="$options --select"
+elif [ "$1" == "focused" ]
+then
+	options="$options --focused"
 fi
 
-$base_command $options "$filename"
+scrot $options "$filename"
+xclip -selection clipboard -target image/png $filename
