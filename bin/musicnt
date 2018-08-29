@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+"""
+Lol dead meme
+
+Kills cmus after it's not played anything after 15 minutes
+
+bin/lock kills cmus when the screen is locked, too, with this script
+
+Add this script to your crontab or something
+
+Kills every instance of cmus on the computer that the executing user is allowed
+to
+"""
+
+import subprocess
+from os.path import expanduser
+
+APPLICATION = 'cmus'
+MAX_AGE = 60 * 15
+AGE_FILE = expanduser('~/.musicnt.donttouchmelol')
+
+def player(commands):
+    """
+    Returns the output of a shell command
+    Automatically adds the playerctl command and specifies music player to
+    control - cmus
+    """
+    return subprocess.run(['playerctl', '-p', APPLICATION] + commands,
+                          stdout=subprocess.PIPE).stdout.decode('utf-8')
+
+
+def is_player_active():
+    """
+    Returns True when music player is open, else returns False
+    """
+    return player(['status']) != 'Not available\n'
+
+
+def playing():
+    """
+    Returns True when music is playing, else returns False
+    """
+    return player(['status']) == 'Playing\n'
+
+
+def kill_music():
+    """
+    Kills all processes with the same name as APPLICATION
+    """
+    import psutil
+    for proc in psutil.process_iter():
+        if proc.name() == APPLICATION:
+            proc.kill()
+
+def main(argv):
+    """
+    Entry point to script
+    """
+    if argv[1] == "kill":
+        kill_music()
+        return 0
+
+    if not is_player_active():
+        print('Not running')
+        return 0
+
+    import time
+    current_time = int(time.time())
+
+    if playing():
+        print('Playing')
+        open(expanduser(AGE_FILE), 'w+').write(
+            str(current_time)
+            )
+        return 0
+
+    print('Killing cmus')
+
+    last_playing = open(expanduser(AGE_FILE)).read()
+    if current_time > int(last_playing) + MAX_AGE:
+        kill_music()
+    return 0
+
+if __name__ == '__main__':
+    import sys
+    sys.exit(main(sys.argv))
