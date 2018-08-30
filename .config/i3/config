@@ -89,7 +89,7 @@ set $bg		#452656
 set $ac		#af4584
 set $tc 	#cccccc
 set $itc	#aaaaaa
-set $ubgc     	#dc322f
+set $ubgc     	#af444f
 
 # window colors
 #                       border  bg      text    indicator
