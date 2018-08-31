@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 ~/bin/musicnt kill
+
 case $1 in
 	"i3lock")
 		icon="$HOME/.lock_icon.png"
