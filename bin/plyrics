@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Cut out crap from https://github.com/hakerdefo/cmus-lyrics
+# LICENSE: Creative Commons Zero v1.0 Universal
+
+if [[ `wget -S --spider "https://makeitpersonal.co" 2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then
+
+printf "\033c"
+artist=$(playerctl metadata xesam:artist)
+title=$(playerctl metadata xesam:title)
+album=$(playerctl metadata xesam:album)
+
+song=$(wget --user-agent="Mozilla/5.0 Gecko/20100101" --no-check-certificate --quiet --timeout=30 -O - "https://makeitpersonal.co/lyrics?artist=$artist&title=$title")
+
+printf "$title - $artist - $album\n$song" | less
+
+fi
