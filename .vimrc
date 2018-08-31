@@ -42,6 +42,7 @@ Plug 'justinmk/vim-sneak'
 "Plug 'tmhedberg/SimpylFold'
 Plug 'rhysd/vim-grammarous'
 Plug 'markonm/traces.vim'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 " Spelling mistakes 
