@@ -104,6 +104,11 @@
 	let g:ale_echo_msg_warning_str = "WARNING"
 	let g:ale_echo_msg_format = "[%linter%][%severity%] %s"
 
+	let g:ale_sign_error = '!'
+	let g:ale_sign_warning = '?'
+	let g:ale_sign_style_error = 'S!'
+	let g:ale_sign_style_warning = 'S?'
+
 " Maps
 	" ALE
 	nmap <silent> <leader>n <Plug>(ale_next_wrap)
