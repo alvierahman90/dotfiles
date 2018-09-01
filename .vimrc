@@ -117,7 +117,7 @@
 	nmap <leader>p :CtrlPMixed<Enter>
 
 	" Esc
-	imap ii <Esc>
+	map ii <Esc>
 
 	" navigating between splits
 	nnoremap <C-J> <C-W><C-J>
