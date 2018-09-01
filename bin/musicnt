@@ -47,10 +47,18 @@ def kill_music():
     """
     Kills all processes with the same name as APPLICATION
     """
-    import psutil
-    for proc in psutil.process_iter():
-        if proc.name() == APPLICATION:
-            proc.kill()
+
+    # Saves things such as cache when quit properly
+    if APPLICATION == 'cmus':
+        from os import system
+        system('cmus-remote -C quit')
+    # Backup if I change music app without adding proper exit, or if it doesn't
+    # have a cli remote
+    else:
+        import psutil
+        for proc in psutil.process_iter():
+            if proc.name() == APPLICATION:
+                proc.kill()
 
 def main(argv):
     """
@@ -75,7 +83,7 @@ def main(argv):
             )
         return 0
 
-    print('Killing cmus')
+    print(f'Quitting/killing {APPLICATION}')
 
     last_playing = open(expanduser(AGE_FILE)).read()
     if current_time > int(last_playing) + MAX_AGE:
