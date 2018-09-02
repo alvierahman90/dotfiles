@@ -46,7 +46,7 @@ background = #452656
 # 16 color space
 
 # Black, Gray, Silver, White
-color0  = #073642
+color0  = #2d2656
 color8  = #002b36
 color7  = #ee8d5
 color15 = #fdf6e3
@@ -74,4 +74,3 @@ color13 = #6c71c4
 # Teal
 color6  = #2aa198
 color14 = #93a1a1
-

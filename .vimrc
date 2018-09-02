@@ -10,10 +10,13 @@
 	set undodir=~/Documents/.undodir
 	set nofoldenable
 	set laststatus=2
-	set cc=81
 
 	runtime! ftplugin/man.vim
 	packadd! editexisting
+
+" 80 margin
+let &cc=join(range(81,999),",")
+highlight ColorColumn ctermbg=0
 
 " Keeping the cursor in the center of the screen when possible
 	augroup VCenterCursor
