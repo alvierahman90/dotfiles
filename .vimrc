@@ -10,6 +10,7 @@
 	set undodir=~/Documents/.undodir
 	set nofoldenable
 	set laststatus=2
+	set cc=81
 
 	runtime! ftplugin/man.vim
 	packadd! editexisting
