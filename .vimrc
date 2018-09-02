@@ -14,6 +14,20 @@
 	runtime! ftplugin/man.vim
 	packadd! editexisting
 
+" Highlighting cursor position
+hi clear cursorline
+hi clear cursorcolumn
+hi cursorline ctermbg=5 ctermfg=7
+hi cursorcolumn ctermbg=5 ctermfg=7
+
+augroup CursorLine
+	au!
+	au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+	au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
+	au WinLeave * setlocal nocursorline
+	au WinLeave * setlocal nocursorcolumn
+augroup END
+
 " 80 margin
 let &cc=join(range(81,999),",")
 highlight ColorColumn ctermbg=0
