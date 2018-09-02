@@ -1,1 +1,4 @@
-set recolor true
+map d set recolor true
+set recolor-lightcolor "#452656"
+set recolor-darkcolor"#452656"
+set guioptions "s"
