@@ -178,7 +178,7 @@ highlight ColorColumn ctermbg=0
 
 " Goyo config
 	let g:goyo_width=80
-	let g:goyo_height='50%'
+	let g:goyo_height='12'
 
 " Syntastic config
 	"" let g:syntastic_always_populate_loc_list = 1
