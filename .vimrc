@@ -61,6 +61,7 @@ highlight ColorColumn ctermbg=0
 	Plug 'markonm/traces.vim'
 	Plug 'tpope/vim-surround'
 	Plug 'w0rp/ale'
+	Plug 'junegunn/goyo.vim'
 	call plug#end()
 
 " Spelling mistakes 
@@ -175,6 +176,9 @@ highlight ColorColumn ctermbg=0
 	let color14 = "#7181C0"
 	let color15 = "#bbbbd4"
 
+" Goyo config
+	let g:goyo_width=80
+	let g:goyo_height='50%'
 
 " Syntastic config
 	"" let g:syntastic_always_populate_loc_list = 1
