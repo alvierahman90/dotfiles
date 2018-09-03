@@ -68,9 +68,6 @@ highlight ColorColumn ctermbg=0
 	hi clear SpellBad
 	hi SpellBad cterm=underline
 
-
-
-
 " Statusline
 	function! GitBranch()
 		return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
@@ -140,6 +137,7 @@ highlight ColorColumn ctermbg=0
 	nmap <leader>p :CtrlPMixed<Enter>
 
 	" Esc
+	map ii <Esc>
 	imap ii <Esc>
 	vmap ii <Esc>
 	cmap ii <Esc>
