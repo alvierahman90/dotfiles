@@ -43,13 +43,16 @@ def main():
     if args.category == "TV FS":
         show_name = get_show_name(file_name)
         path = generate_path(show_name, args.category)
+
+        logging.info(show_name)
+        logging.info(path)
+
         if not os.path.isdir(path):
             subprocess.run(['mkdir', path])
-        return link(args.file,
-                    generate_path(show_name, args.category) + file_name, dry_run=args.dry_run)
+        return link(args.file, path + file_name, dry_run=args.dry_run)
     elif args.category in ["Movie", "Documentary"]:
-        return link(args.file,
-                    generate_path(file_name, args.category), dry_run=args.dry_run)
+        path = generate_path(show_name, args.category)
+        return link(args.file, path, dry_run=args.dry_run)
     elif args.category == "TV Ep":
         # TODO implement automagic linking of single episodes
         logging.info("single episodes not implemented yet")
