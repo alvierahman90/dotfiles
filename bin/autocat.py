@@ -51,6 +51,7 @@ def main():
             subprocess.run(['mkdir', path])
         return link(args.file, path + file_name, dry_run=args.dry_run)
     elif args.category in ["Movie", "Documentary"]:
+        show_name = get_show_name(file_name)
         path = generate_path(show_name, args.category)
         return link(args.file, path, dry_run=args.dry_run)
     elif args.category == "TV Ep":
@@ -82,6 +83,10 @@ def get_show_name(file_name):
     file_name = file_name.replace('.', ' ')
     logging.info("file_name.replace('.', ' '): " + file_name)
     file_name = re.split("[sS][0-9][0-9]", file_name)[0]
+    file_name = re.split("2160p", file_name)[0]
+    file_name = re.split("1080p", file_name)[0]
+    file_name = re.split("1080i", file_name)[0]
+    file_name = re.split("720p", file_name)[0]
     logging.info("re.split(\"S[0-9][0-9]\", file_name)[0]: " + file_name)
 
     # send and process the request
@@ -126,7 +131,6 @@ def generate_path(show_name, category):
         base += show_name + "/"
     elif category in ['Movie', 'Documentary']:
         base += "Movies/"
-        base += show_name
 
     return base
 
