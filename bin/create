@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cp ~/.templates/$1 $2
+chmod +x $2
+$EDITOR $2

@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+
+import sys
+
+
+def get_args():
+    import argparse
+    parser = argparse.ArgumentParser()
+    return parser.parse_args()
+
+
+def main(args):
+    pass
+
+
+if __name__ == '__main__':
+    args = get_args()
+    sys.exit(main(args))
