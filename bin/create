@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-cp ~/.templates/$1 $2
-chmod +x $2
-$EDITOR $2
+cp ~/.templates/$(echo $1 | rev | cut -d '.' -f 1 | rev) $1
+chmod +x $1
+$EDITOR $1
