@@ -1,5 +1,46 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 
-cp ~/.templates/$(echo $1 | rev | cut -d '.' -f 1 | rev) $1
-chmod +x $1
-$EDITOR $1
+import sys
+from os.path import expanduser
+from os.path import isfile
+from os import environ
+from os import getcwd
+from os import system
+from jinja2 import Template
+
+
+def get_args():
+    """ Get command line arguments """
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("filename")
+    parser.add_argument("-t", "--template", type=str)
+    return parser.parse_args()
+
+
+def main(args):
+    """ Main function """
+    if isfile(args.filename):
+        while True:
+            overwrite = input(f"{args.filename} already exists. Overwrite? (y/n) ")
+            if overwrite.lower() in ['n', 'no', 'ur mum gay']:
+                return 0
+            elif overwrite.lower() in ['y', 'yes', 'yeet']:
+                break
+
+    template_name = args.filename.split(".")[-1] if not args.template else args.template
+
+    with open(expanduser("~/.templates/") + template_name) as file:
+        template = Template(file.read())
+
+    with open(args.filename, 'w+') as file:
+        file.write(template.render(directory=getcwd()))
+
+    system(f"chmod +x {args.filename}")
+    system(f"{environ['EDITOR']} {args.filename}")
+
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main(get_args()))

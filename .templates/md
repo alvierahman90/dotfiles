@@ -1,10 +1,7 @@
 ---
 name: Alvie Rahman
 date: \today
-title: // TODO
+title: {{ directory.split('/')[5] + ' $\cdot$ // TODO add title' if '/home/alvie/Documents/school' in directory else '// TODO' }}
 ---
 
-\maketitle
-\newpage
-\tableofcontents
-\newpage
+
