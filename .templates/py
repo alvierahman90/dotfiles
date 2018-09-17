@@ -4,15 +4,17 @@ import sys
 
 
 def get_args():
+    """ Get command line arguments """
+
     import argparse
     parser = argparse.ArgumentParser()
     return parser.parse_args()
 
 
 def main(args):
-    pass
+    """ Entry point for script """
+    return 0
 
 
 if __name__ == '__main__':
-    args = get_args()
-    sys.exit(main(args))
+    sys.exit(main(get_args()))
