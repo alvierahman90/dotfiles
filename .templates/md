@@ -1,5 +1,5 @@
 ---
-name: Alvie Rahman
+author: Alvie Rahman
 date: \today
 title: {{ directory.split('/')[5] + ' $\cdot$ // TODO add title' if '/home/alvie/Documents/school' in directory else '// TODO' }}
 ---
