@@ -14,6 +14,8 @@ def parse_args():
                         'without extension', type=str, default=None)
     parser.add_argument('-t', '--template', help='Specify template',
                         type=str, default=expanduser('~/.pandoc/default.latex'))
+    parser.add_argument('-f', '--fontsize', help='Set font size',
+                        type=str, default="10pt")
     parser.add_argument('input', help='Specify input file', type=str)
     return parser.parse_args()
 
@@ -27,7 +29,8 @@ def main():
     file_base = args.output if args.output else args.input
 
     output = subprocess.run(['pandoc', '-o', file_base + '.' + args.extension,
-                             '--template', args.template, args.input],
+                             '--template', args.template, '-V', 
+                             'fontsize=' + args.fontsize,args.input],
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
