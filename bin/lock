@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-~/bin/musicnt kill
+/usr/bin/playerctl pause
 
 case $1 in
 	"i3lock")
