@@ -193,9 +193,9 @@ exec termite -t music -e /usr/bin/cmus
 for_window [title="termite-scratchpad"] floating enable
 for_window [title="termite-scratchpad"] move scratchpad
 for_window [title="termite-scratchpad"] resize set 800 500
-for_window [title="music"] floating enable
-for_window [title="music"] move scratchpad
-for_window [title="music"] resize set 800 500
+for_window [title="^music$"] floating enable
+for_window [title="^music$"] move scratchpad
+for_window [title="^music$"] resize set 800 500
 for_window [title="Telegram"] floating enable
 for_window [title="Telegram"] move scratchpad
 for_window [title="Telegram"] resize set 800 500
@@ -205,7 +205,7 @@ for_window [class="discord"] move scratchpad
 for_window [class="discord"] resize set 800 500
 
 bindsym $mod+u [title="termite-scratchpad"] scratchpad show; [title="termite-scratchpad"] move position center
-bindsym $mod+m [title="music"] scratchpad show; [title="music"] move position center
+bindsym $mod+m [title="^music$"] scratchpad show; [title="^music$"] move position center
 bindsym $mod+t [title="Telegram"] scratchpad show; [title="Telegram"] move position center
 bindsym $mod+y [class="discord"] scratchpad show; [class="discord"] move position center
 
