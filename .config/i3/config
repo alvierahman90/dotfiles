@@ -108,14 +108,14 @@ for_window [title="^.*noborder.*"] border pixel 0
 # rofi
 #
 bindsym $mod+d exec rofi-preconf window
-bindsym $mod+p exec /home/alvie/bin/rofi_scripts/rofi-emoji.sh
-bindsym $mod+Shift+p exec /home/alvie/bin/rofi_scripts/rofi-iso8859-1.py
+bindsym $mod+p exec ~/bin/rofi_scripts/rofi-emoji.sh
+bindsym $mod+Shift+p exec ~/bin/rofi_scripts/rofi-iso8859-1.py
 bindsym $mod+q exec rofi-preconf run
 bindsym $mod+Ctrl+q exec rofi-pass
 
 
 hide_edge_borders both
-exec  compton --config /home/alvie/.config/compton.conf 
+exec  compton --config ~/.config/compton.conf 
 
 # screenshot keybindings
 #
@@ -125,7 +125,7 @@ bindsym --release Ctrl+Print exec ss focused
 
 # set wallpaper
 #
-exec_always feh --bg-fill /home/alvie/.wallpaper
+exec_always feh --bg-fill ~/.wallpaper
 
 # disable screen timeout
 #
@@ -136,8 +136,7 @@ exec xset -dpms
 # and adds the binding for locking 
 #
 #exec cinnamon-screensaver
-bindsym $mod+shift+x exec /home/alvie/bin/lock i3lockfancy
-
+bindsym $mod+shift+x exec ~/bin/lock i3lockfancy
 
 # i3-gaps
 # 
