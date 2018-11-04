@@ -49,7 +49,7 @@ highlight ColorColumn ctermbg=0
 	Plug 'Valloric/YouCompleteMe'
 	Plug 'godlygeek/tabular'
 	Plug 'tpope/vim-markdown'
-	Plug 'alvierahman90/nofrils'
+	Plug 'robertmeta/nofrils'
 	Plug 'jamestomasino/vim-conceal'
 	"" Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -158,24 +158,6 @@ highlight ColorColumn ctermbg=0
 	let foreground = "#bbbbd4"
 	let cursor     = "#bbbbd4"
 
-" Colors
-	let color0  = "#311a38"
-	let color1  = "#C63E81"
-	let color2  = "#A25696"
-	let color3  = "#CB4484"
-	let color4  = "#E44684"
-	let color5  = "#7884BC"
-	let color6  = "#7181C0"
-	let color7  = "#bbbbd4"
-	let color8  = "#828294"
-	let color9  = "#C63E81"
-	let color10 = "#A25696"
-	let color11 = "#CB4484"
-	let color12 = "#E44684"
-	let color13 = "#7884BC"
-	let color14 = "#7181C0"
-	let color15 = "#bbbbd4"
-
 " Goyo config
 	let g:goyo_width=80
 	let g:goyo_height='12'
@@ -206,3 +188,7 @@ highlight ColorColumn ctermbg=0
 
 	"" nnoremap <silent> <leader>s :<C-u>call ToggleErrors()<CR>
 	"" inoremap <silent> <leader>s <Esc>:<C-u>call ToggleErrors()<CR>a
+
+" Nofrils theme config
+	colo nofrils-dark
+	NofrilsFocusNormal
