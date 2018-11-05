@@ -162,9 +162,6 @@ gaps outer 10
 gaps inner 10
 #smart_gaps on
 
-# Music keybindings
-#
-bindsym o exec pavucontrol
 # Volume keys
 #
 bindsym XF86AudioMute exec amixer sset 'Master' toggle
@@ -194,6 +191,7 @@ exec --no-startup-id unclutter -idle 1
 exec redshift 
 exec telegram
 exec discord
+exec pavucontrol
 
 # Fucking Firefox, man
 #
@@ -238,3 +236,10 @@ for_window [title="^qBittorrent v"] floating enable
 for_window [title="^qBittorrent v"] move scratchpad
 for_window [title="^qBittorrent v"] resize set $width $height
 bindsym Shift+m [title="^qBittorrent v"] scratchpad show; [title="^qBittorrent v"] move position center
+
+# Pavucontrol -
+# 
+for_window [title="^Volume Control$"] floating enable
+for_window [title="^Volume Control$"] move scratchpad
+for_window [title="^Volume Control$"] resize set $width $height
+bindsym o [title="^Volume Control$"] scratchpad show; [title="^Volume Control$"] move position center
