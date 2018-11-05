@@ -19,43 +19,43 @@ font scientifica
 
 floating_modifier $mod
 
-bindsym $mod+Return exec termite -e /usr/bin/tmux
+bindsym Return exec termite -e /usr/bin/tmux
 
-bindsym $mod+Shift+q kill
+bindsym Shift+q kill
 
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up	
-bindsym $mod+l focus right
+bindsym h focus left
+bindsym j focus down
+bindsym k focus up	
+bindsym l focus right
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym Shift+h move left
+bindsym Shift+j move down
+bindsym Shift+k move up
+bindsym Shift+l move right
 
-#bindsym $mod+semicolon split h
-bindsym $mod+v split v
-bindsym $mod+f fullscreen toggle
+#bindsym semicolon split h
+bindsym v split v
+bindsym f fullscreen toggle
 
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym s layout stacking
+bindsym w layout tabbed
+bindsym e layout toggle split
 
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
+bindsym Shift+space floating toggle
+bindsym space focus mode_toggle
 
-bindsym $mod+a focus parent
-bindsym $mod+Shift+a focus child
+bindsym a focus parent
+bindsym Shift+a focus child
 
 # workspace related controls are done with external command which is triggered 
 # through rofi - ~/bin/wksp
 #
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
+bindsym Shift+c reload
+bindsym Shift+r restart
 
 # exit i3 (logs you out of your X session)
 #
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 #
@@ -72,11 +72,19 @@ mode "resize" {
 
         # back to normal
         #
-	bindsym $mod+r mode "default"
+	bindsym r mode "default"
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym r mode "resize"
+
+set $mode_normal Normal mode
+
+mode "$mode_normal" {
+	bindsym $mod+Return  mode "default"
+}
+
+bindsym n mode "$mode_normal"
 
 ## Base16 Default Dark
 ## Author: Chris Kempson (http://chriskempson.com)
@@ -117,10 +125,10 @@ for_window [title="^.*noborder.*"] border pixel 0
 
 # rofi
 #
-bindsym $mod+d exec rofi-preconf window
-bindsym $mod+p exec ~/bin/rofi_scripts/rofi-emoji.sh
-bindsym $mod+Shift+p exec ~/bin/rofi_scripts/rofi-iso8859-1.py
-bindsym $mod+q exec rofi-preconf run
+bindsym d exec rofi-preconf window
+bindsym p exec ~/bin/rofi_scripts/rofi-emoji.sh
+bindsym Shift+p exec ~/bin/rofi_scripts/rofi-iso8859-1.py
+bindsym q exec rofi-preconf run
 bindsym $mod+Ctrl+q exec rofi-pass
 
 
@@ -146,7 +154,7 @@ exec xset -dpms
 # and adds the binding for locking 
 #
 #exec cinnamon-screensaver
-bindsym $mod+shift+x exec ~/bin/lock i3lockfancy
+bindsym shift+x exec ~/bin/lock i3lockfancy
 
 # i3-gaps
 # 
@@ -156,7 +164,7 @@ gaps inner 10
 
 # Music keybindings
 #
-bindsym $mod+o exec pavucontrol
+bindsym o exec pavucontrol
 # Volume keys
 #
 bindsym XF86AudioMute exec amixer sset 'Master' toggle
@@ -201,14 +209,14 @@ exec termite -t termite-scratchpad -e /usr/bin/tmux
 for_window [title="termite-scratchpad"] floating enable
 for_window [title="termite-scratchpad"] move scratchpad
 for_window [title="termite-scratchpad"] resize set $width $height
-bindsym $mod+u [title="termite-scratchpad"] scratchpad show; [title="termite-scratchpad"] move position center
+bindsym u [title="termite-scratchpad"] scratchpad show; [title="termite-scratchpad"] move position center
 # Music - cmus in termite with the title "music"
 #
 exec termite -t music -e /usr/bin/cmus
 for_window [title="^music$"] floating enable
 for_window [title="^music$"] move scratchpad
 for_window [title="^music$"] resize set $width $height
-bindsym $mod+m [title="^music$"] scratchpad show; [title="^music$"] move position center
+bindsym m [title="^music$"] scratchpad show; [title="^music$"] move position center
 # Telegram - Using title allows the media viewer window to be made fullscreen on
 # the current workspace rather than being put in the scratchpad
 #
@@ -216,17 +224,17 @@ for_window [title="Telegram"] floating enable
 for_window [title="Telegram"] move scratchpad
 for_window [title="Telegram"] resize set $width $height
 for_window [title="Media viewer" class="Telegram"] fullscreen
-bindsym $mod+t [title="Telegram"] scratchpad show; [title="Telegram"] move position center
+bindsym t [title="Telegram"] scratchpad show; [title="Telegram"] move position center
 # Discord - the width is too small but Discord sorts itself out anyways
 #
 for_window [class="discord"] floating enable
 for_window [class="discord"] move scratchpad
 for_window [class="discord"] resize set $width $height
-bindsym $mod+y [class="discord"] scratchpad show; [class="discord"] move position center
+bindsym y [class="discord"] scratchpad show; [class="discord"] move position center
 # qBittorrent - using title with "v" makes it so other windows (e.g. add 
 # torrent) are shown on current workspace
 #
 for_window [title="^qBittorrent v"] floating enable
 for_window [title="^qBittorrent v"] move scratchpad
 for_window [title="^qBittorrent v"] resize set $width $height
-bindsym $mod+Shift+m [title="^qBittorrent v"] scratchpad show; [title="^qBittorrent v"] move position center
+bindsym Shift+m [title="^qBittorrent v"] scratchpad show; [title="^qBittorrent v"] move position center

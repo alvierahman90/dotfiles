@@ -92,7 +92,7 @@ font-0 = scientifica
 font-1 = ${root.font-0}
 font-2 = ${root.font-0}
 
-modules-left = 
+modules-left = i3
 modules-center = xwindow
 modules-right = 
 module-padding = 0
@@ -161,3 +161,8 @@ label-muted = muted
 type = custom/script
 exec = ~/.config/polybar/polybar-twitch.py
 interval = 300
+
+[module/i3]
+type = internal/i3
+label-mode = %mode%
+format = <label-state>        <label-mode>
