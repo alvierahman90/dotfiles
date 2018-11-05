@@ -11,6 +11,7 @@
 #
 
 set $mod Mod4
+set $hyper mod4+Shift+mod1+Ctrl
 
 # window title font
 #
@@ -59,7 +60,9 @@ bindsym Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do
 
 # resize window (you can also use the mouse for that)
 #
-mode "resize" {
+#
+set $mode_resize Resize mode
+mode "$mode_resize" {
         bindsym h resize shrink width  10 px or 10 ppt
         bindsym j resize grow   height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
@@ -76,15 +79,27 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindsym r mode "resize"
+bindsym r mode "$mode_resize"
 
-set $mode_normal Normal mode
+set $mode_normal Application mode
 
 mode "$mode_normal" {
-	bindsym $mod+Return  mode "default"
+	bindsym $hyper+Return mode "default"
+	# Volume keys
+	#
+	bindsym XF86AudioMute exec amixer sset 'Master' toggle
+	bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
+	bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
+
+	# Media player controls
+	#
+	bindsym XF86AudioPlay exec playerctl -p cmus play-pause
+	bindsym XF86AudioPause exec playerctl -p cmus pause
+	bindsym XF86AudioNext exec playerctl -p cmus next
+	bindsym XF86AudioPrev exec playerctl -p cmus previous
 }
 
-bindsym n mode "$mode_normal"
+bindsym $hyper+Return mode "$mode_normal"
 
 ## Base16 Default Dark
 ## Author: Chris Kempson (http://chriskempson.com)
