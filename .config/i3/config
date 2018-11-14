@@ -85,6 +85,7 @@ set $mode_normal Application mode
 
 mode "$mode_normal" {
 	bindsym $hyper+Return mode "default"
+	bindsym $mod+Ctrl+q exec rofi-pass
 	# Volume keys
 	#
 	bindsym XF86AudioMute exec amixer sset 'Master' toggle
@@ -144,7 +145,6 @@ bindsym d exec rofi-preconf window
 bindsym p exec ~/bin/rofi_scripts/rofi-emoji.sh
 bindsym Shift+p exec ~/bin/rofi_scripts/rofi-iso8859-1.py
 bindsym q exec rofi-preconf run
-bindsym $mod+Ctrl+q exec rofi-pass
 
 
 hide_edge_borders both
