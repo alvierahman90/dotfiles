@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+termite -t music -e /usr/bin/cmus

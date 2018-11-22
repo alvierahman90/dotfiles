@@ -199,14 +199,14 @@ set $height 500
 set $width 800
 # Terminal - Just a terminal to do terminally things
 #
-exec termite -t termite-scratchpad -e /usr/bin/tmux
+exec ~/bin/scratchpad/terminal
 for_window [title="termite-scratchpad"] floating enable
 for_window [title="termite-scratchpad"] move scratchpad
 for_window [title="termite-scratchpad"] resize set $width $height
 bindsym $mod+u [title="termite-scratchpad"] scratchpad show; [title="termite-scratchpad"] move position center
 # Music - cmus in termite with the title "music"
 #
-exec termite -t music -e /usr/bin/cmus
+exec ~/bin/scratchpad/music
 for_window [title="^music$"] floating enable
 for_window [title="^music$"] move scratchpad
 for_window [title="^music$"] resize set $width $height
