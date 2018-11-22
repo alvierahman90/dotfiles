@@ -132,9 +132,9 @@ exec  compton --config ~/.config/compton.conf
 
 # screenshot keybindings
 #
-bindsym $mod+--release Print exec ss
-bindsym $mod+--release shift+Print exec ss select
-bindsym $mod+--release Ctrl+Print exec ss focused
+bindsym --release Print exec ss
+bindsym --release shift+Print exec ss select
+bindsym --release Ctrl+Print exec ss focused
 
 # set wallpaper
 #
