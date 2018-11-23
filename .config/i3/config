@@ -125,6 +125,7 @@ bindsym $mod+d exec rofi-preconf window
 bindsym $mod+p exec ~/bin/rofi_scripts/rofi-emoji.sh
 bindsym $mod+Shift+p exec ~/bin/rofi_scripts/rofi-iso8859-1.py
 bindsym $mod+q exec rofi-preconf run
+bindsym $mod+Ctrl+q exec rofi-pass
 
 
 hide_edge_borders both
@@ -191,7 +192,7 @@ exec xinput set-prop 8 "libinput Middle Emulation Enabled" 1
 
 # Fucking Firefox, man
 #
-bindsym $mod+Ctrl+q exec ~/.config/i3/firefox-ctrl-q-workaround/noctrlq.sh
+Ctrl+q exec ~/.config/i3/firefox-ctrl-q-workaround/noctrlq.sh
 
 # Scratchpad
 #
