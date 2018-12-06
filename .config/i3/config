@@ -63,21 +63,21 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 #
 set $mode_resize Resize mode
 mode "$mode_resize" {
-        bindsym $mod+h resize shrink width  10 px or 10 ppt
-        bindsym $mod+j resize grow   height 10 px or 10 ppt
-        bindsym $mod+k resize shrink height 10 px or 10 ppt
-        bindsym $mod+l resize grow   width  10 px or 10 ppt
+        bindsym h resize shrink width  10 px or 10 ppt
+        bindsym j resize grow   height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow   width  10 px or 10 ppt
 	
-	bindsym $mod+Shift+h resize shrink width  1 px or 1 ppt
-        bindsym $mod+Shift+j resize grow   height 1 px or 1 ppt
-        bindsym $mod+Shift+k resize shrink height 1 px or 1 ppt
-        bindsym $mod+Shift+l resize grow   width  1 px or 1 ppt
+	bindsym Shift+h resize shrink width  1 px or 1 ppt
+        bindsym Shift+j resize grow   height 1 px or 1 ppt
+        bindsym Shift+k resize shrink height 1 px or 1 ppt
+        bindsym Shift+l resize grow   width  1 px or 1 ppt
 
         # back to normal
         #
-	bindsym $mod+r mode "default"
-        bindsym $mod+Return mode "default"
-        bindsym $mod+Escape mode "default"
+	bindsym r mode "default"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
 }
 bindsym $mod+r mode "$mode_resize"
 
