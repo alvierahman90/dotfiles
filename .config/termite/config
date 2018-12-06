@@ -1,5 +1,5 @@
 [options]
-font = scientifica 8
+font = Inconsolata 14
 mouse_autohide = true
 cursor_shape = block
 #size_hints = true
