@@ -186,7 +186,7 @@ exec qbittorrent
 exec sleep 3
 exec i3 workspace main
 exec bars --startup
-exec --no-startup-id unclutter -idle 1
+# exec --no-startup-id unclutter -idle 1
 exec redshift 
 exec telegram
 exec discord
