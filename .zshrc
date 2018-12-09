@@ -101,14 +101,11 @@ config config --local status.showUntrackedFiles no
 
 alias uarpi="ssh pi 'cd /home/alvie/holdon-bot; git pull; reboot; exit'"
 alias xo="xdg-open"
-alias pag="ps aux | grep -i"
+alias pag="ps aux | grep -v grep | grep -i "
 alias tt="cat ~/timetable"
-alias ttmon="tt | cut -d '|' -f 2 | cut -d ' ' -f 2-"
-alias tttue="tt | cut -d '|' -f 3 | cut -d ' ' -f 2-"
-alias ttwed="tt | cut -d '|' -f 4 | cut -d ' ' -f 2-"
-alias ttthu="tt | cut -d '|' -f 5 | cut -d ' ' -f 2-"
-alias ttfri="tt | cut -d '|' -f 6 | cut -d ' ' -f 2-"
+alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 echo "${NC}"
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
+

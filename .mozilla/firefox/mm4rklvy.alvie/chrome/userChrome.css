@@ -1,0 +1,50 @@
+:root {
+	/* from https://github.com/samme/base16-styles/blob/master/css-variables/base16-default-dark.css */
+	/* apart from comments */
+	--base00: #181818; /* Default Background */
+	--base01: #282828; /* Lighter Background (status bars */
+	--base02: #383838; /* Selection Background */
+	--base03: #585858; /* Comments, invisibles, line higlighting */
+	--base04: #b8b8b8; /* Dark foreground (status bars) */
+	--base05: #d8d8d8; /* Default Foreground, Caret, Delimiters, Operators */
+	--base06: #e8e8e8; /*  Light Foreground (Not often used) */
+	--base07: #f8f8f8; /* Light Background (Not often used) */
+	--base08: #ab4642; /* Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */
+	--base09: #dc9656; /* Integers, Boolean, Constants, XML Attributes, Markup Link Url */
+	--base0A: #f7ca88; /* Classes, Markup Bold, Search Text Background */
+	--base0B: #a1b56c; /* Strings, Inherited Class, Markup Code, Diff Inserted */
+	--base0C: #86c1b9; /* Support, Regular Expressions, Escape Characters, Markup Quotes */
+	--base0D: #7cafc2; /* Functions, Methods, Attribute IDs, Headings */
+	--base0E: #ba8baf; /* Keywords, Storage, Selector, Markup Italic, Diff Changed */
+	--base0F: #a16946; /* Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>  */
+}
+
+#urlbar { 
+	background-color: #00000000 !important;
+	border: none !important;
+}
+
+#forward-button 
+, #back-button
+, .tab-line{
+	display: none;
+}
+
+#TabsToolbar {
+	background-color: var(--base00) !important;
+}
+
+#connection-icon 
+, vbox.identity-popup-security-content {
+	fill: var(--base0B) !important;
+}
+
+#identity-icon-labels 
+, .identity-popup-connection-secure[when-connection^=secure] {
+	color: var(--base0B) !important;
+}
+
+#nav-bar
+, .tabbrowser-tab[selected=true]  .tab-loading-burst{
+	background-color: var(--base01) !important;
+} 
