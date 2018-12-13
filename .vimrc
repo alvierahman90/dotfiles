@@ -10,6 +10,7 @@
 	set undodir=~/Documents/.undodir
 	set nofoldenable
 	set laststatus=2
+	set ignorecase
 
 	runtime! ftplugin/man.vim
 	packadd! editexisting
@@ -95,20 +96,22 @@ highlight ColorColumn ctermbg=0
 
 	set statusline=""
 	set statusline+=%{StatuslineGit()}
-	set statusline+=%h
-	set statusline+=%w
-	set statusline+=%r
-	set statusline+=%m
-	set statusline+=\ ·\ %f
-	set statusline+=\ \ 
+	set statusline+=%h " help buffer flag [Help]
+	set statusline+=%w " preview window flag [Preview]
+	set statusline+=%r " readonly flag [RO]
+	set statusline+=%m " Modified plag [+] or [-]
 	set statusline+=%#warningmsg#
 	"" set statusline+=%{SyntasticStatuslineFlag()} " syntastic
-	set statusline=%{LinterStatus()}
+	set statusline+=%{LinterStatus()}
 	set statusline+=%*
-	set statusline+=%=
-	set statusline+=%L
+	set statusline+=%= " left/right separator 
+	set statusline+=%L " number of lines in buffer
+	set statusline+=\ 
+	set statusline+=(%p%%) " percentage through file
 	set statusline+=\ ·\ 
-	set statusline+=%c
+	set statusline+=%c " current column
+	set statusline+=\ ·\ 
+	set statusline+=%f " file path relative to current directory
 	set statusline+=\ ·\ 
 	set statusline+=[%{&fileencoding?&fileencoding:&encoding}]
 	set statusline+=\[%{&fileformat}\] 
