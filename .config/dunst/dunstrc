@@ -174,17 +174,17 @@
 
 
 
-frame_color = "#d8d8d8"
+frame_color = "#383838"
 separator_color = "#d8d8d8"
 
 [base16_low]
 	msg_urgency = low
 	background = "#282828"
-	foreground = "#585858"
+	foreground = "#d8d8d8"
 
 [base16_normal]
 	msg_urgency = normal
-	background = "#383838"
+	background = "#181818"
 	foreground = "#d8d8d8"
 
 [base16_critical]
