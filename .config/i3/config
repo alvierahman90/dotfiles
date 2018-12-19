@@ -166,6 +166,8 @@ gaps inner 10
 bindsym XF86AudioMute exec amixer sset 'Master' toggle
 bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
 bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
+bindsym Ctrl+XF86AudioLowerVolume exec cmus-remote -v -5%
+bindsym Ctrl+XF86AudioRaiseVolume exec cmus-remote -v +5%
 
 # Media player controls
 #
