@@ -192,6 +192,7 @@ exec telegram
 exec discord
 exec pavucontrol
 exec xinput set-prop 8 "libinput Middle Emulation Enabled" 1
+exec steam
 
 # Fucking Firefox, man
 #
@@ -234,3 +235,8 @@ for_window [title="^Volume Control$"] floating enable
 for_window [title="^Volume Control$"] move scratchpad
 for_window [title="^Volume Control$"] resize set $floating_default_width $floating_default_height
 bindsym $mod+o [title="^Volume Control$"] scratchpad show; [title="^Volume Control$"] move position center
+# Steam
+for_window [class="^Steam$"] floating enable
+for_window [class="^Steam$"] move scratchpad
+for_window [class="^Steam$"] resize set $floating_default_width $floating_default_height
+bindsym $mod+Shift+s [class="^Steam$"] scratchpad show; [class="^Steam$"] move position center
