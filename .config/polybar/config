@@ -129,7 +129,7 @@ exec = ~/.config/polybar/redshift.sh
 
 [module/music]
 type = custom/script
-interval = 0.1
+interval = 0.5
 exec = ~/.config/polybar/music.py
 
 [module/crypto]
@@ -160,7 +160,7 @@ label-muted = muted
 [module/cmus_volume]
 type=custom/script
 exec=~/.config/polybar/cmus_volume.py
-interval=0.1
+interval=0.5
 
 [module/twitch]
 type = custom/script
