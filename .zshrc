@@ -23,17 +23,20 @@ function zpool_info {
 			;;
 		"free") field="4"
 			;;
-		"exapandz") field="5"
+		"ckpoint")
+			field="5"
 			;;
-		"frag") field="6"
+		"exapandz") field="6"
 			;;
-		"cap") field="7"
+		"frag") field="7"
 			;;
-		"dedup") field="8"
+		"cap") field="8"
 			;;
-		"health") field="9"
+		"dedup") field="9"
 			;;
-		"altroot") field="10"
+		"health") field="10"
+			;;
+		"altroot") field="11"
 			;;
 		*)
 			field="1"
