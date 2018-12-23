@@ -192,6 +192,10 @@ separator_color = "#d8d8d8"
 	background = "#ab4642"
 	foreground = "#e8e8e8"
 
+[discord]
+	appname="Discord"
+	markup=no
+
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
