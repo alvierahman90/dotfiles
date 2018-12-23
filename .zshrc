@@ -91,15 +91,15 @@ fi
 # dotfile management 
 if [ "$HOST" = "desktot" ]
 then
-	alias config='/usr/bin/git --git-dir=/home/alvie/Documents/projects/dotfiles.git --work-tree=/home/alvie'
+	alias gconfig='/usr/bin/git --git-dir=/home/alvie/Documents/projects/dotfiles.git --work-tree=/home/alvie'
 fi
 
 if [ "$HOST" = "pi" ]
 then
-	alias config='/usr/bin/git --git-dir=/root/dotfiles.git --work-tree=/root'
+	alias gconfig='/usr/bin/git --git-dir=/root/dotfiles.git --work-tree=/root'
 fi
 
-config config --local status.showUntrackedFiles no
+gconfig config --local status.showUntrackedFiles no
 
 
 alias uarpi="ssh pi 'cd /home/alvie/holdon-bot; git pull; reboot; exit'"
