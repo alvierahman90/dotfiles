@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=utf-8
+Version=1.0
+Name=tmux
+GenericName=Terminal
+Exec=tmux
+Terminal=true
+Type=Application
