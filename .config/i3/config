@@ -23,7 +23,7 @@ font scientifica
 
 floating_modifier $mod
 
-bindsym $mod+Return exec termite -e /usr/bin/tmux
+bindsym $mod+Return exec st /usr/bin/tmux
 
 bindsym $mod+Shift+q kill
 
