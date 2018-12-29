@@ -213,7 +213,7 @@ exec ~/bin/scratchpad/music
 for_window [class="^music$"] floating enable
 for_window [class="^music$"] move scratchpad
 for_window [class="^music$"] resize set $floating_default_width $floating_default_height
-bindsym $mod+m [class="^music$"] scratchpad show; [class="^cmus v[0-9]"] move position center
+bindsym $mod+m [class="^music$"] scratchpad show; [class="^music$"] move position center
 # Telegram - Using title allows the media viewer window to be made fullscreen on
 # the current workspace rather than being put in the scratchpad
 for_window [title="Telegram"] floating enable
