@@ -13,8 +13,8 @@
 set $mod Mod4
 set $hyper mod4+Shift+mod1+Ctrl
 
-set $floating_default_height 500
-set $floating_default_width 800
+set $floating_default_height 800
+set $floating_default_width 1500
 
 # window title font
 #
