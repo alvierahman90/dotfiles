@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-st -t music /usr/bin/cmus
+st -c music -t music /usr/bin/cmus

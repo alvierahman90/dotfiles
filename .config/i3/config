@@ -210,10 +210,10 @@ for_window [title="termite-scratchpad"] resize set $floating_default_width $floa
 bindsym $mod+u [title="termite-scratchpad"] scratchpad show; [title="termite-scratchpad"] move position center
 # Music - cmus in termite with the title "music"
 exec ~/bin/scratchpad/music
-for_window [title="^music$"] floating enable
-for_window [title="^music$"] move scratchpad
-for_window [title="^music$"] resize set $floating_default_width $floating_default_height
-bindsym $mod+m [title="^music$"] scratchpad show; [title="^music$"] move position center
+for_window [class="^music$"] floating enable
+for_window [class="^music$"] move scratchpad
+for_window [class="^music$"] resize set $floating_default_width $floating_default_height
+bindsym $mod+m [class="^music$"] scratchpad show; [class="^cmus v[0-9]"] move position center
 # Telegram - Using title allows the media viewer window to be made fullscreen on
 # the current workspace rather than being put in the scratchpad
 for_window [title="Telegram"] floating enable
