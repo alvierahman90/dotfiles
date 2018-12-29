@@ -10,6 +10,8 @@ export VISUAL=/usr/bin/vim
 export BETTER_EXCEPTIONS=1
 export VIMRUNTIME="/usr/share/vim/current"
 
+export PATH="$PATH:/home/$USER/bin"
+
 prompt minimal
 export GPG_TTY=$(tty)
 
@@ -23,8 +25,7 @@ function zpool_info {
 			;;
 		"free") field="4"
 			;;
-		"ckpoint")
-			field="5"
+		"ckpoint") field="5"
 			;;
 		"exapandz") field="6"
 			;;
@@ -41,7 +42,7 @@ function zpool_info {
 		*)
 			field="1"
 	esac
-	cat .zpool.list | \
+	zpool list | \
 		tail -n +2 | \
 		sed -e "s/  */ /g" | \
 		grep "^$2" | \
@@ -49,7 +50,7 @@ function zpool_info {
 }
 
 function zpool_info_time {
-	cat .zpool.list | \
+	zpool list | \
 		head -n 1
 }
 
@@ -76,7 +77,7 @@ function disk_info {
 # status stuff for ZFS, for computer named 'desktot' only
 if [ "$HOST" = "desktot" ]
 then
-	cat ~/.zpool.status
+	zpool status
 	echo ""
 	echo "Using $(zpool_info cap storage) of zfs pool storage, leaving $(zpool_info free storage) free. It is $(zpool_info frag storage) fragmented."
 	for drive in "/home" "/" "/mnt/not_porn"
