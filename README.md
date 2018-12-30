@@ -12,8 +12,9 @@ clone with `--recurse-submodules` flag
 - Volume control: pavucontrol
 - Bars: polybar
 - BitTorrent client: qbittorrent
+- Password Manager: pass w/ rofi-pass
 
-`cmus thunar ranger firefox vim firefox pavucontrol qbittorrent`
+`cmus thunar ranger firefox vim firefox pavucontrol qbittorrent password-store`
 
 ### Terminal
 
