@@ -194,7 +194,6 @@ exec telegram
 exec discord
 exec pavucontrol
 exec xinput set-prop 8 "libinput Middle Emulation Enabled" 1
-exec steam
 
 # Fucking Firefox, man
 #
