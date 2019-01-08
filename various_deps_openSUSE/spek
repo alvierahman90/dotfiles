@@ -1,0 +1,2 @@
+sudo zypper in ffmpeg-3-libavcodec-devel ffmpeg-3-libavformat-devel ffmpeg-3-libavutil-devel
+sudo zypper in wxWidgets-wxcontainer-devel
