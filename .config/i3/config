@@ -227,10 +227,10 @@ for_window [class="discord"] resize set $floating_default_width $floating_defaul
 bindsym $mod+y [class="discord"] scratchpad show; [class="discord"] move position center
 # qBittorrent - using title with "v" makes it so other windows (e.g. add 
 # torrent) are shown on current workspace
-for_window [title="^qBittorrent v"] floating enable
-for_window [title="^qBittorrent v"] move scratchpad
-for_window [title="^qBittorrent v"] resize set $floating_default_width $floating_default_height
-bindsym $mod+Shift+m [title="^qBittorrent v"] scratchpad show; [title="^qBittorrent v"] move position center
+for_window [class="^qBittorrent"] floating enable
+for_window [class="^qBittorrent"] move scratchpad
+for_window [class="^qBittorrent"] resize set $floating_default_width $floating_default_height
+bindsym $mod+Shift+m [class="^qBittorrent"] scratchpad show; [class="^qBittorrent"] move position center
 # Pavucontrol -
 for_window [title="^Volume Control$"] floating enable
 for_window [title="^Volume Control$"] move scratchpad
