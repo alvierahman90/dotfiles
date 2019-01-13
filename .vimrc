@@ -195,3 +195,5 @@ highlight ColorColumn ctermbg=0
 " Nofrils theme config
 	colo nofrils-dark
 	NofrilsFocusNormal
+" vimscrot
+	command Screenshot !~/.vim/shell_scripts/vimscrot.sh
