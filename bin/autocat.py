@@ -28,6 +28,7 @@ def main():
     args = parse_args()
     logging.info("args.file = '{}'".format(args.file))
     logging.info("args.category = '{}'".format(args.category))
+
     if args.dry_run:
         logging.info("DRY RUN - No linking will happen")
 
@@ -40,6 +41,10 @@ def main():
         file_name = os.path.split(file_name)[1]
     logging.info("file_name = '{}'".format(file_name))
 
+    if args.category in ["Movie", "Documentary"]:
+        path = generate_path('', args.category)
+        return link(args.file, path, dry_run=args.dry_run)
+
     if args.category == "TV FS":
         show_name = get_show_name(file_name)
         path = generate_path(show_name, args.category)
@@ -50,10 +55,6 @@ def main():
         if not os.path.isdir(path):
             subprocess.run(['mkdir', path])
         return link(args.file, path + file_name, dry_run=args.dry_run)
-    elif args.category in ["Movie", "Documentary"]:
-        show_name = get_show_name(file_name)
-        path = generate_path(show_name, args.category)
-        return link(args.file, path, dry_run=args.dry_run)
     elif args.category == "TV Ep":
         # TODO implement automagic linking of single episodes
         logging.info("single episodes not implemented yet")
