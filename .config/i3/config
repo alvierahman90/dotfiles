@@ -132,7 +132,7 @@ bindsym $mod+q exec rofi-preconf run
 bindsym $mod+Ctrl+q exec rofi-pass
 
 
-hide_edge_borders both
+#hide_edge_borders both
 exec  compton --config ~/.config/compton.conf 
 
 # screenshot keybindings
@@ -158,9 +158,9 @@ bindsym $mod+shift+x exec ~/bin/lock i3lockfancy
 
 # i3-gaps
 # 
-gaps outer 10
-gaps inner 10
-#smart_gaps on
+# gaps outer 10
+# gaps inner 10
+# smart_gaps on
 
 # Volume keys
 #

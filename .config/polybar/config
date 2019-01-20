@@ -9,10 +9,10 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #00000000
+background = #181818
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
-foreground = #fff
+foreground = #d8d8d8
 foreground-alt = #555
 primary = #fff
 secondary = #e60053
@@ -51,7 +51,7 @@ font-2 = ${root.font-0}
 
 modules-left = pulseaudio cmus_volume music
 modules-center = date
-modules-right = twitch
+modules-right = twitch xwindow i3
 module-padding = 0
 
 tray-position = right
@@ -82,7 +82,6 @@ border-color = #fff
 
 padding-left = 5
 padding-right = 0
-
 
 module-margin-left = 5
 module-margin-right = 0

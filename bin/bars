@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-polybar top&
-if [ "$1" == "--startup" ]
-then
-	sleep 5
-else
-	sleep 0.25
-fi
-polybar lower&
+polybar top
+#if [ "$1" == "--startup" ]
+#then
+#	sleep 5
+#else
+#	sleep 0.25
+#fi
+#polybar lower&
