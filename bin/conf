@@ -19,7 +19,6 @@ gconfig = json.loads(config['general']['gconfig'])
 
 git_shortcuts = [ "diff", "push", "status", "add", "reset", "rm" ]
 
-
 def get_args():
     """ Get command line arguments """
 
@@ -27,25 +26,26 @@ def get_args():
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(dest="subparser")
 
-    edit_parser = subparsers.add_parser('edit')
+    edit_parser = subparsers.add_parser('edit', aliases='e')
     edit_parser.add_argument("program", type=str)
-    edit_parser.add_argument("file", nargs='?', default=None, type=str)
+    edit_parser.add_argument("type", nargs="?", default=None, type=str)
     edit_parser.add_argument("--noadd", action="store_true", default=False, help="Don't stage file for commit in git")
     edit_parser.add_argument("--commit", action="store_true", default=False, help="Commit after quitting")
 
-    git_parser = subparsers.add_parser('git')
+    git_parser = subparsers.add_parser('git', aliases='g')
     git_parser.add_argument("command", nargs='*')
 
-    set_parser = subparsers.add_parser('set')
+    read_parser = subparsers.add_parser('read', aliases='r')
+    read_parser.add_argument("program", type=str)
+    read_parser.add_argument("type", nargs="?", default=None, type=str)
+    read_parser.add_argument("value", type=str)
+
+    set_parser = subparsers.add_parser('set', aliases='s')
     set_parser.add_argument("program", type=str)
-    set_parser.add_argument("type", type=str, choices=['default', 'directory'])
+    set_parser.add_argument("type", nargs="?", default=None, type=str)
     set_parser.add_argument("value", type=str)
 
-    read_parser = subparsers.add_parser('read')
-    read_parser.add_argument('program')
-    read_parser.add_argument("file", nargs='?', default=None, type=str)
-
-    ls_parser = subparsers.add_parser('ls')
+    ls_parser = subparsers.add_parser('ls', aliases='l')
     ls_parser.add_argument('program')
 
     for shortcut in git_shortcuts:
@@ -61,15 +61,15 @@ def get_args():
 def main(args):
     """ Entry point for script """
 
-    if args.subparser == "edit":
+    if args.subparser == "edit" or args.subparser == 'e':
         return edit(args)
-    elif args.subparser == "git":
+    elif args.subparser == "git" or args.subparser == 'g':
         return git(args)
-    elif args.subparser == "set":
+    elif args.subparser == "set" or args.subparser == 's':
         set_program(args)
-    elif args.subparser == "read":
+    elif args.subparser == "read" or args.subparser == 'r':
         read_config(args)
-    elif args.subparser == "ls":
+    elif args.subparser == "ls" or args.subparser == 'l':
         list_files(args)
     elif args.subparser in git_shortcuts:
         git(args, prefix=[args.subparser])
@@ -100,36 +100,44 @@ def git(args, prefix=[]):
     subprocess.run(gconfig + prefix + args.command)
 
 def get_filepath(args):
-    if args.program in config:
-        if args.file:
-            filepath = expanduser(config[args.program]['directory'] + '/' + args.file)
-        else:
-            filepath = expanduser(config[args.program]['default'])
+    if '/' in args.program:
+        program = args.program.split("/")[0]
+        file = '/'.join(args.program.split("/")[1:])
     else:
-        directory = expanduser("~/.config/" + args.program)
-        if args.file:
-            filepath = directory + "/" + args.file
+        program = args.program
+        file=False
+
+    # if there is a custom shortcut set by user
+    if program in config:
+        if args.type:
+            filepath = expanduser(config[program][args.type])
+        elif file:
+            filepath = expanduser(config[program]['directory'] + '/' + file)
+        else:
+            filepath = expanduser(config[program]['default'])
+    else:
+        directory = expanduser("~/.config/" + program)
+        # send the filename in the arguments PROGRAM/FILENAME
+        if file:
+            filepath = directory + "/" + file
         else:
             filepath = directory + "/config"
         if not os.path.exists(filepath):
-            create_path = input("File not found. Create? (y/N) ")
+            create_path = input(f"File '{filepath}' not found. Create? (y/N) ")
             if create_path.lower() in ['y', 'yes']:
                 create_path = True
             else:
-                create_path = False
-
-            if create_path:
-                create.create(filepath)
-
+                return False
+            create.create(filepath)
+    
+    print(f"Filepath: {filepath}")
     return filepath
 
 def edit(args):
     filepath = get_filepath(args)
-    subprocess.run([os.environ["EDITOR"], filepath])
-    if not args.noadd or args.commit:
-        subprocess.run(gconfig + ['add', filepath])
-    if args.commit:
-        subprocess.run(gconfig + ['add', filepath])
+    if filepath:
+        print("Editing " + filepath)
+        subprocess.run([os.environ["EDITOR"], filepath])
     return 0
 
 
