@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+if [ "$1" == "--update" ]; then
+	cd $HOME/.apps/
+	wget -O discord.tar.gz \
+	  "https://discordapp.com/api/download?platform=linux&format=tar.gz"
+	tar -xzf discord.tar.gz
+	chmod +x Discord/Discord
+	rm discord.tar.gz
+fi
+
+$HOME/.apps/Discord/Discord
+
+
