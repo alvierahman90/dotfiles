@@ -113,3 +113,5 @@ echo "${NC}"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 
+export GOPATH="$HOME/gopath"
+export PATH="$GOPATH:$GOPATH/bin:$PATH"
