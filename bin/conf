@@ -17,7 +17,7 @@ config.read(config_location)
 
 gconfig = json.loads(config['general']['gconfig'])
 
-git_shortcuts = [ "diff", "push", "status", "add", "reset", "rm" ]
+git_shortcuts = [ ("diff", "gd"), ("push", "gp"), ("status", "gs"), ("add", "ga"), ("reset", "gr"), ("rm", "grm") ]
 
 def get_args():
     """ Get command line arguments """
@@ -49,10 +49,10 @@ def get_args():
     ls_parser.add_argument('program')
 
     for shortcut in git_shortcuts:
-        shortcut_parser = subparsers.add_parser(shortcut)
+        shortcut_parser = subparsers.add_parser(shortcut[0], aliases=[shortcut[1]])
         shortcut_parser.add_argument("command", nargs='*')
 
-    commit_parser = subparsers.add_parser('commit')
+    commit_parser = subparsers.add_parser('commit', aliases=["gc"])
     commit_parser.add_argument("command", nargs='*')
 
     return parser.parse_args()
@@ -71,10 +71,12 @@ def main(args):
         read_config(args)
     elif args.subparser == "ls" or args.subparser == 'l':
         list_files(args)
-    elif args.subparser in git_shortcuts:
-        git(args, prefix=[args.subparser])
-    elif args.subparser == "commit":
+    elif args.subparser == "commit" or args.subparser == 'gc':
         git(args, prefix=["commit", "-m"])
+        
+    for shortcut in git_shortcuts:
+        if args.subparser in shortcut:
+            git(args, prefix=[shortcut[0]])
 
 def list_files(args):
     if args.program in config:
@@ -136,7 +138,6 @@ def get_filepath(args):
 def edit(args):
     filepath = get_filepath(args)
     if filepath:
-        print("Editing " + filepath)
         subprocess.run([os.environ["EDITOR"], filepath])
     return 0
 
