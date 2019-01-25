@@ -45,7 +45,7 @@ def main():
         path = generate_path('', args.category)
         return link(args.file, path, dry_run=args.dry_run)
 
-    if args.category == "TV FS":
+    elif args.category == "TV FS":
         show_name = get_show_name(file_name)
         path = generate_path(show_name, args.category)
 
@@ -55,12 +55,16 @@ def main():
         if not os.path.isdir(path):
             subprocess.run(['mkdir', path])
         return link(args.file, path + file_name, dry_run=args.dry_run)
-    elif args.category == "TV Ep":
-        # TODO implement automagic linking of single episodes
-        logging.info("single episodes not implemented yet")
-        return 1
     else:
-        logging.info("this category has not been implemented yet")
+        logging.info("Checking if custom command is available")
+        script = os.path.expanduser("~/.autocat/") + args.category
+        command = [script, args.file, file_name]
+        logging.info("command = '" + str(command) + "'")
+        if os.path.isfile(script):
+            if not args.dry_run:
+                subprocess.run(command)
+        else:
+            logging.info("this category has not been implemented yet")
         return 1
 
 
