@@ -96,7 +96,7 @@ def main():
     status_message = "{playing} {track} - {artist}".format(
         playing=status_symbol(),
         track=get_track(),
-        artist=get_artist())
+        artist=get_artist()).replace('\n', '')
 
     print(status_message)
     return 0
