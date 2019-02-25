@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#~/bin/minecraft-launcher/minecraft-launcher.sh
+~/Documents/MultiMC/MultiMC $@
