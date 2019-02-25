@@ -31,7 +31,7 @@ fi
 # take screenshot
 
 scrot $options "$images_dir/$filename"
-xclip -selection clipboard -target image/png $filename
+xclip -selection clipboard -target image/png "./images/$filename"
 
 printf "Open picture? (y/n/blank) "
 read open
