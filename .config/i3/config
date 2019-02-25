@@ -133,7 +133,7 @@ bindsym $mod+Ctrl+q exec rofi-pass
 
 
 hide_edge_borders smart
-exec  compton --config ~/.config/compton.conf 
+#exec  compton --config ~/.config/compton.conf 
 
 # screenshot keybindings
 #
