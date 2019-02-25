@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-st -c music -t music /usr/bin/cmus
+while true
+do
+	st -c music -t music /usr/bin/cmus
+done
