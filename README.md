@@ -26,4 +26,7 @@ clone with `--recurse-submodules` flag
 ![Dirty](./dotfile-images/dirty.png)
 ![Scratchpad Teriminal](./dotfile-images/scratchpad-term.png)
 ![Scratchpad Music](./dotfile-images/scratchpad-music.png)
+
+## wallpaper
+
 ![Wallpaper](./dotfile-images/wallpaper.png)
