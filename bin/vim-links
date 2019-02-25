@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+filename="$HOME/.$(date --iso-8601=s).md"
+target="dietpi:/var/www/html/index.md"
+
+echo "Filename: $filename"
+echo "Target: $target"
+
+echo "Copying latest index.md as $filename"
+scp "$target" "$filename"
+
+vim "$filename"
+
+echo "Pushing $filename as $target"
+scp "$filename" "$target"
+
+echo "Removing $filename"
+rm "$filename"
+
