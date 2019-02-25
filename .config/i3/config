@@ -177,6 +177,11 @@ bindsym XF86AudioPause exec playerctl -p cmus pause
 bindsym XF86AudioNext exec playerctl -p cmus next
 bindsym XF86AudioPrev exec playerctl -p cmus previous
 
+bindsym $hyper+z exec playerctl -p cmus play-pause
+bindsym $hyper+x exec playerctl -p cmus pause
+bindsym $hyper+c exec playerctl -p cmus next
+bindsym $hyper+v exec playerctl -p cmus previous
+
 workspace_layout tabbed
 
 focus_follows_mouse no
@@ -187,7 +192,6 @@ exec i3 workspace main
 exec i3 workspace bt
 exec qbittorrent
 exec sleep 3
-exec i3 workspace main
 exec bars --startup
 # exec --no-startup-id unclutter -idle 1
 exec redshift 
@@ -237,3 +241,39 @@ bindsym $mod+Shift+m [class="^qBittorrent"] scratchpad show; [class="^qBittorren
 #for_window [title="^Volume Control$"] move scratchpad
 #for_window [title="^Volume Control$"] resize set $floating_default_width $floating_default_height
 #bindsym $mod+o [title="^Volume Control$"] scratchpad show; [title="^Volume Control$"] move position center
+#
+
+
+# workspaces
+set $ws1 "q"
+set $ws2 "w"
+set $ws3 "f"
+set $ws4 "p"
+set $ws5 "g"
+set $ws6 "j"
+set $ws7 "l"
+set $ws8 "u"
+set $ws9 "y"
+
+
+# switch to workspace
+bindsym $hyper+q workspace $ws1
+bindsym $hyper+w workspace $ws2
+bindsym $hyper+f workspace $ws3
+bindsym $hyper+p workspace $ws4
+bindsym $hyper+g workspace $ws5
+bindsym $hyper+j workspace $ws6
+bindsym $hyper+l workspace $ws7
+bindsym $hyper+u workspace $ws8
+bindsym $hyper+y workspace $ws9
+
+# move focused container to workspace
+bindsym $hyper+a move container to workspace $ws1
+bindsym $hyper+r move container to workspace $ws2
+bindsym $hyper+s move container to workspace $ws3
+bindsym $hyper+t move container to workspace $ws4
+bindsym $hyper+d move container to workspace $ws5
+bindsym $hyper+h move container to workspace $ws6
+bindsym $hyper+n move container to workspace $ws7
+bindsym $hyper+e move container to workspace $ws8
+bindsym $hyper+i move container to workspace $ws9
