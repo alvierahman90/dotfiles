@@ -171,3 +171,6 @@ type = internal/i3
 label-mode = %mode%
 format = <label-state>        <label-mode>
 label-focused-foreground=#a16946
+strip-wsnumbers=true
+enable-scroll = false
+enable-click = false

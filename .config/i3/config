@@ -245,15 +245,15 @@ bindsym $mod+Shift+m [class="^qBittorrent"] scratchpad show; [class="^qBittorren
 
 
 # workspaces
-set $ws1 "q"
-set $ws2 "w"
-set $ws3 "f"
-set $ws4 "p"
-set $ws5 "g"
-set $ws6 "j"
-set $ws7 "l"
-set $ws8 "u"
-set $ws9 "y"
+set $ws1 "1:q"
+set $ws2 "2:w"
+set $ws3 "3:f"
+set $ws4 "4:p"
+set $ws5 "5:g"
+set $ws6 "6:j"
+set $ws7 "7:l"
+set $ws8 "8:u"
+set $ws9 "9:y"
 
 
 # switch to workspace
