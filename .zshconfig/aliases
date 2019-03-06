@@ -1,0 +1,4 @@
+alias xo="xdg-open"
+alias pag="ps aux | grep -v grep | grep -i "
+alias tt="cat ~/timetable"
+alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"

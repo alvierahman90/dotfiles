@@ -1,0 +1,56 @@
+if [ "$HOST" != "desktot" ]
+then
+	exit
+fi
+
+source ~/.zshconfig/colors
+
+function zpool_info {
+	case "$1" in
+		"name") field="1";;
+		"size") field="2";;
+		"alloc") field="3";;
+		"free") field="4";;
+		"ckpoint") field="5";;
+		"exapandz") field="6";;
+		"frag") field="7";;
+		"cap") field="8";;
+		"dedup") field="9";;
+		"health") field="10";;
+		"altroot") field="11";;
+		*)field="1"
+	esac
+	zpool list | \
+		tail -n +2 | \
+		sed -e "s/  */ /g" | \
+		grep "^$2" | \
+		cut -d ' ' -f $field
+}
+
+function zpool_info_time {
+	zpool list | \
+		head -n 1
+}
+
+function disk_info {
+	case "$1" in
+		"filesystem") field="1";;
+		"1k-blocks") field="2";;
+		"used") field="3";;
+		"available") field="4";;
+		"usepercentage") field="5";;
+		"mountpoint") field="6";;
+		*) field="6";;
+	esac
+	df | sed -e 's/  */ /g' | grep $2$ | cut -d ' ' -f $field
+}
+
+
+echo "Using $(zpool_info cap storage) of zfs pool, leaving $fg[yellow]$(zpool_info free storage) free$reset_color. It is $fg[yellow]$(zpool_info frag storage) fragmented$reset_color."
+for drive in "/home" "/" "/mnt/not_porn"
+do
+	if grep -qs "$drive " /proc/mounts; then
+		echo "Using $(disk_info usepercentage $drive) of $drive, leaving $fg[yellow]$(disk_info available $drive) free$reset_color."
+	fi
+done
+echo ""
