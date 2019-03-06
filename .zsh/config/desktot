@@ -3,7 +3,7 @@ then
 	exit
 fi
 
-source ~/.zshconfig/colors
+source ~/.zsh/config/colors
 
 function zpool_info {
 	case "$1" in

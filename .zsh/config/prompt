@@ -1,4 +1,4 @@
-source ~/.zshconfig/colors
+source ~/.zsh/config/colors
 
 prompt minimal
 PROMPT='> Current track: %{$fg[yellow]%}$(playerctl -p cmus metadata xesam:title)%{$reset_color%} by %{$fg[yellow]%}$(playerctl -p cmus metadata xesam:artist)%{$reset_color%}
