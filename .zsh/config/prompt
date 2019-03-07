@@ -1,8 +1,16 @@
 source ~/.zsh/config/colors
 
+function cmus_status {
+	response="$(playerctl -p cmus status)"
+	if [ "$response" = "Paused" ]
+	then
+		echo -n " [Paused]"
+	fi
+}
+
 prompt minimal
 PROMPT='> Last command returned: %{$fg[yellow]%}$?%{$reset_color%}
-> Current track: %{$fg[yellow]%}$(playerctl -p cmus metadata xesam:title)%{$reset_color%} by %{$fg[yellow]%}$(playerctl -p cmus metadata xesam:artist)%{$reset_color%}
+> Current track%{$fg[yellow]%}$(cmus_status)%{$reset_color%}: %{$fg[yellow]%}$(playerctl -p cmus metadata xesam:title)%{$reset_color%} by %{$fg[yellow]%}$(playerctl -p cmus metadata xesam:artist) %{$reset_color%} 
 > Current directory: %{$fg[yellow]%}$(PWD)%{$reset_color%}
 > Current time: %{$fg[yellow]%}$(date)%{$reset_color%}
 %{$fg[yellow]%}> %{$reset_color%}'
