@@ -25,6 +25,8 @@
 }
 
 #forward-button 
+, #page-action-buttons
+, .urlbar-history-dropmarker[tooltiptext="Show history"]
 , #back-button
 , .tab-line{
 	display: none;
