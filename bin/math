@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+if [ "$1" == "--help" ]; then
+	echo "Usage: math EXPRESSION
+Runs code in a python3 print statement with everything from the math module
+imported in the current namespace (from math import *)"
+	exit 0
+fi
+
+echo -n "OUTPUT: "
+python3 -c "from math import *; print($(echo $@))"
