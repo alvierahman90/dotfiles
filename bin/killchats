@@ -1,4 +1,0 @@
-#!/bin/sh
-
-killall Telegram
-killall Discord ; killall Discord
