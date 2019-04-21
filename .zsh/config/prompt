@@ -1,28 +1,4 @@
 source ~/.zsh/config/colors
-source ~/.zsh/config/desktot
-
-function cmus_status {
-	response="$(playerctl -p cmus status)"
-	if [ "$response" = "Paused" ]
-	then
-		echo -n " [Paused]"
-	fi
-}
-
-if [ "$HOST" = "desktot" ]
-then
-	prompt minimal
-	PROMPT='> %{$fg[yellow]%}$(zpool_info free storage)%{$reset_color%} / %{$fg[yellow]%}$(disk_info available /home)%{$reset_color%} / %{$fg[yellow]%}$(disk_info available /)%{$reset_color%}
-> Last command returned: %{$fg[yellow]%}$?%{$reset_color%}
-> Current track%{$fg[yellow]%}$(cmus_status)%{$reset_color%}: %{$fg[yellow]%}$(playerctl -p cmus metadata xesam:title)%{$reset_color%} by %{$fg[yellow]%}$(playerctl -p cmus metadata xesam:artist) %{$reset_color%} 
-> Current directory: %{$fg[yellow]%}$(PWD)%{$reset_color%}
-> Current time: %{$fg[yellow]%}$(date)%{$reset_color%}
-%{$fg[yellow]%}> %{$reset_color%}'
-	return 0
-fi
 
 prompt minimal
-PROMPT='> Last command returned: %{$fg[yellow]%}$?%{$reset_color%}
-> Current directory: %{$fg[yellow]%}$(PWD)%{$reset_color%}
-> Current time: %{$fg[yellow]%}$(date)%{$reset_color%}
-%{$fg[yellow]%}> %{$reset_color%}'
+PROMPT='%{$fg[yellow]%}$(echo $PWD | sed -e "s#$HOME#~#" | rev | cut -d '/' -f -2 | rev)%{$reset_color%} '
