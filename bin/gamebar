@@ -1,0 +1,39 @@
+#/usr/bin/env bash
+
+PID=""
+GAME=""
+PLAYING=""
+
+while [ true ]
+do
+	FocusApp=`xdotool getwindowfocus getwindowname`
+
+	# iterate through all games, if the window title matches, set PLAYING
+	# to "true" and break out of the loop
+	#
+	while read line; do
+		if [[ "$FocusApp" =~ $line ]]; then
+			PLAYING="true"
+			break
+		else
+			PLAYING=""
+		fi
+	done < ~/.gamelist
+
+	# launch bar if appropriate conditions are met, kill if it no game is
+	# focused and bar with the correct PID is running
+	# 
+	echo ":$PID:"
+	if [ -n "$PLAYING" ] ; then
+		if [ -z "$PID" ]; then
+			polybar minecraft &
+			GAME="$FocusApp"
+			PID="$!"
+		fi
+	elif [ ! -z "$PID" ]; then
+		kill -9 "$PID"
+		PID=""
+	fi
+
+	sleep 0.5
+done
