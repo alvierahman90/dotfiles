@@ -1,18 +1,33 @@
+#!/usr/bin/env bash
 
 
+# azlyrics doesn't like peeps cURLing stuff so set a custom useragent
+#
 USERAGENT="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0"
 
+
+# get metadata via playerctl, convert it all to lowercase, and remove anything
+# that is not alphanumeric, since that's how azlyrics appears to format their
+# URLs
+#
 ARTIST="$( playerctl -p cmus metadata xesam:artist \
 	| tr '[:upper:]' '[:lower:]' \
 	| sed -e 's/[^a-z0-9]//g')"
 
+# additionally, remove any features from the titles, since azlyrics doesn't
+# include that either
+#
 SONG="$( playerctl -p cmus metadata xesam:title \
 	| tr '[:upper:]' '[:lower:]' \
 	| sed -E 's/\((feat.*|ft.*)\)//g' \
 	| sed -e 's/[^a-z0-9]//g')"
 
-exec 2> /dev/null
+# azlyrics.com has some html errors and this silences this as well as curl's
+# download indicator thingy
+#
+exec 2> /dev/null 
 
+# finally, grab, extract, clean, and display the lyrics
 curl -H "$USERAGENT" "https://www.azlyrics.com/lyrics/$ARTIST/$SONG.html" \
  	| xmllint --html --xpath '/html/body/div[3]/div/div[2]/div[5]' - \
 	| sed -e 's/<[^>]*>//g' \
