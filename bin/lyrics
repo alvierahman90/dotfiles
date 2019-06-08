@@ -1,20 +1,20 @@
-#!/usr/bin/env bash
 
-# Cut out crap from https://github.com/hakerdefo/cmus-lyrics
-# LICENSE: Creative Commons Zero v1.0 Universal
 
-if [[ `wget -S --spider "https://makeitpersonal.co" 2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then
+USERAGENT="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0"
 
-printf "\033c"
-player="cmus"
-options="-p $player"
-command="playerctl $options"
-artist="$($command metadata xesam:artist)"
-title="$($command metadata xesam:title)"
-album="$($command metadata xesam:album)"
+ARTIST="$( playerctl -p cmus metadata xesam:artist \
+	| tr '[:upper:]' '[:lower:]' \
+	| sed -e 's/[^a-z0-9]//g')"
 
-song="$(wget --user-agent="Mozilla/5.0 Gecko/20100101" --no-check-certificate --quiet --timeout=30 -O - "https://makeitpersonal.co/lyrics?artist=$artist&title=$title")"
+SONG="$( playerctl -p cmus metadata xesam:title \
+	| tr '[:upper:]' '[:lower:]' \
+	| sed -E 's/\((feat.*|ft.*)\)//g' \
+	| sed -e 's/[^a-z0-9]//g')"
 
-printf "$title - $artist - $album\n$song" | less
+exec 2> /dev/null
 
-fi
+curl -H "$USERAGENT" "https://www.azlyrics.com/lyrics/$ARTIST/$SONG.html" \
+ 	| xmllint --html --xpath '/html/body/div[3]/div/div[2]/div[5]' - \
+	| sed -e 's/<[^>]*>//g' \
+	| tail -n +3 \
+	| head -c -1
