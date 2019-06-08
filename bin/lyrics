@@ -11,7 +11,7 @@ SONG="$(playerctl -p cmus metadata xesam:title)"
 # that is not alphanumeric, since that's how azlyrics appears to format their
 # URLs
 #
-STRIPPED_ARTIST="$( playerctl -p cmus metadata xesam:artist \
+STRIPPED_ARTIST="$( echo $ARTIST \
 	| tr '[:upper:]' '[:lower:]' \
 	| sed -e 's/[^a-z0-9]//g' \
 	| sed -e 's/^the//' )"
@@ -19,7 +19,7 @@ STRIPPED_ARTIST="$( playerctl -p cmus metadata xesam:artist \
 # additionally, remove any features from the titles, since azlyrics doesn't
 # include that either
 #
-STRIPPED_SONG="$( playerctl -p cmus metadata xesam:title \
+STRIPPED_SONG="$( echo $SONG \
 	| tr '[:upper:]' '[:lower:]' \
 	| sed -E 's/\((feat.*|ft.*)\)//g' \
 	| sed -e 's/[^a-z0-9]//g' \
