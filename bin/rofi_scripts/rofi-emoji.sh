@@ -78,13 +78,9 @@ function display() {
 
     line=($line)
 
-    if [ $exit_code == 0 ]; then
-	sleep 0.125
-        xdotool type --clearmodifiers "${line[0]}"
-    elif [ $exit_code == 10 ]; then
-	sleep 0.125
-        echo -n "${line[0]}" | xsel -i -b
-    fi
+    sleep 0.125
+    echo -n "${line[0]}" | xsel -i -b
+    xdotool type --clearmodifiers "${line[0]}"
 }
 
 
