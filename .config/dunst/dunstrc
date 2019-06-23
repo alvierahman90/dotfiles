@@ -80,7 +80,7 @@
 	# Don't remove messages, if the user is idle (no mouse or keyboard input)
 	# for longer than idle_threshold seconds.
 	# Set to 0 to disable.
-	idle_threshold = 60
+	idle_threshold = 1
 
 	# Which monitor should the notifications be displayed on.
 	monitor = 0
@@ -103,7 +103,7 @@
 	sticky_history = yes
 
 	# Maximum amount of notifications kept in history
-	history_length = 15
+	history_length = 20
 
 	# Display indicators for URLs (U) and actions (A).
 	show_indicators = no
