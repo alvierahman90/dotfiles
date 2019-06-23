@@ -125,12 +125,13 @@ for_window [title="^.*noborder.*"] border pixel 0
 
 # rofi
 #
-bindsym $mod+d exec rofi-preconf window
-bindsym $mod+p exec ~/bin/rofi_scripts/rofi-emoji.sh
-bindsym $mod+Shift+p exec ~/bin/rofi_scripts/rofi-iso8859-1.py
-bindsym $mod+q exec rofi-preconf run
-bindsym $mod+Ctrl+q exec rofi-pass
+bindsym $mod+Shift+d exec rofi-preconf -show window
+bindsym $mod+d exec rofi-preconf -show run
 
+bindsym $mod+Shift+t exec ~/bin/rofi_scripts/rofi-emoji.sh
+bindsym $mod+t exec ~/bin/rofi_scripts/rofi-iso8859-1.py
+
+bindsym $mod+Ctrl+q exec rofi-pass
 
 hide_edge_borders smart
 #exec  compton --config ~/.config/compton.conf 
