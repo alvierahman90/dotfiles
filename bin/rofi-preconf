@@ -1,3 +1,6 @@
 #!/bin/bash
 
-rofi-themed "-show $1"
+rofi \
+	-i \
+	-theme base16-default-dark \
+	$@ \
