@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-st -t termite-scratchpad /usr/bin/tmux
