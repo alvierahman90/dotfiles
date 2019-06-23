@@ -157,34 +157,7 @@ highlight ColorColumn ctermbg=0
 
 " Goyo config
 	let g:goyo_width=80
-	let g:goyo_height='12'
-
-" Syntastic config
-	"" let g:syntastic_always_populate_loc_list = 1
-	"" let g:syntastic_auto_loc_list = 0
-	"" let g:syntastic_check_on_open = 1
-	"" let g:syntastic_check_on_wq = 0
-	"" let g:syntastic_python_checkers = ['pylint']
-	"" 
-	"" let g:syntastic_error_symbol = 'E'
-	"" let g:syntastic_style_error_symbol = 'S'
-	"" let g:syntastic_warning_symbol = 'W'
-	"" let g:syntastic_style_warning_symbol = 's'
-	"" 
-	"" " Toggling Syntastic's Location pane thingymabob
-	"" " https://stackoverflow.com/questions/17512794/toggle-error-location-panel-in-syntastic/17515778#17515778
-	"" function! ToggleErrors()
-	"" 	let old_last_winnr = winnr('$')
-	"" 	lclose
-	"" 	if old_last_winnr == winnr('$')
-	"" 		" Nothing was closed, open syntastic error
-	"" 		" location panel
-	"" 		Errors
-	"" 	endif
-	"" endfunction
-
-	"" nnoremap <silent> <leader>s :<C-u>call ToggleErrors()<CR>
-	"" inoremap <silent> <leader>s <Esc>:<C-u>call ToggleErrors()<CR>a
+	let g:goyo_height=24
 
 " Nofrils theme config
 	colo nofrils-dark
