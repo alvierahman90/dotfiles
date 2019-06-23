@@ -164,3 +164,13 @@ highlight ColorColumn ctermbg=0
 	NofrilsFocusNormal
 " vimscrot
 	command Screenshot !~/.vim/shell_scripts/vimscrot.sh
+" Switch HL / ^$ for faster movement
+	noremap H ^
+	noremap L $
+	noremap ^ H
+	noremap $ L
+
+" listchars
+	set list
+	set listchars=nbsp:_,tab:<·>,extends:>,space:·
+
