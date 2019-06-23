@@ -73,7 +73,7 @@ def main(args):
         list_files(args)
     elif args.subparser == "commit" or args.subparser == 'gc':
         git(args, prefix=["commit", "-m"])
-        
+
     for shortcut in git_shortcuts:
         if args.subparser in shortcut:
             git(args, prefix=[shortcut[0]])
@@ -131,7 +131,7 @@ def get_filepath(args):
             else:
                 return False
             create.create(filepath)
-    
+
     print(f"Filepath: {filepath}")
     return filepath
 
