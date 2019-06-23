@@ -16,6 +16,7 @@ def parse_args():
                         type=str, default=expanduser('~/.pandoc/default.latex'))
     parser.add_argument('-f', '--fontsize', help='Set font size',
                         type=str, default="10pt")
+    parser.add_argument('-n', '--pdf-engine', default="pdflatex")
     parser.add_argument('input', help='Specify input file', type=str)
     return parser.parse_args()
 
@@ -29,8 +30,10 @@ def main():
     file_base = args.output if args.output else args.input
 
     output = subprocess.run(['pandoc', '-o', file_base + '.' + args.extension,
+                             '--pdf-engine', args.pdf_engine,
                              '--template', args.template, '-V', 
-                             'fontsize=' + args.fontsize,args.input],
+                             'fontsize=' + args.fontsize,
+                             args.input],
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
