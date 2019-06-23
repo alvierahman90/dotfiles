@@ -1,4 +1,9 @@
 alias xo="xdg-open"
 alias pag="ps aux | grep -v grep | grep -i "
+alias paig="ps aux | grep -iv grep | grep -i "
 alias tt="cat ~/timetable"
 alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
+
+alias commit="git commit"
+alias add="git add"
+alias status="git status"
