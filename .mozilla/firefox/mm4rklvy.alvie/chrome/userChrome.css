@@ -28,6 +28,7 @@
 , #page-action-buttons
 , .urlbar-history-dropmarker[tooltiptext="Show history"]
 , #back-button
+, #sidebar-icon
 , .tab-line{
 	display: none;
 }
@@ -47,6 +48,26 @@
 }
 
 #nav-bar
+, #sidebar-header
 , .tabbrowser-tab[selected=true]  .tab-loading-burst{
-	background-color: var(--base01) !important;
+	background-color: var(--base00) !important;
 } 
+#sidebar-splitter {
+	background-color: var(--base00) !important;
+	border: none !important;
+}
+
+
+#main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar > .toolbar-items {
+	opacity: 0;
+	pointer-events: none;
+}
+#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
+	visibility: collapse !important;
+}
+
+#sidebar-title
+, #sidebar-switcher-arrow 
+{
+	color: var(--base-05) !important;
+}
