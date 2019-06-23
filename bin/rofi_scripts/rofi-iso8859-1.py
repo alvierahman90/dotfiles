@@ -418,7 +418,7 @@ for i in chardict:
 
 rofi = Popen(
       args=[
-            'rofi-themed',
+            'rofi-preconf',
             '-dmenu',
             '-i',
             '-p',
