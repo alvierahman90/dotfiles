@@ -13,8 +13,7 @@
 set $mod Mod4
 set $hyper mod4+Shift+mod1+Ctrl
 
-set $floating_default_height 800
-set $floating_default_width 1200
+focus_follows_mouse no
 
 # window title font
 #
@@ -40,21 +39,18 @@ bindsym $mod+Shift+l move right
 
 #bindsym $mod+semicolon split h
 bindsym $mod+v split v
-bindsym $mod+f fullscreen toggle
+bindsym $mod+a fullscreen toggle
 
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+s layout tabbed
 bindsym $mod+e layout toggle split
 
 bindsym $mod+Shift+space floating toggle; resize set $floating_default_width $floating_default_height; move position center
 bindsym $mod+space focus mode_toggle
 
-bindsym $mod+a focus parent
+bindsym $mod+Ctrl+a focus parent
 bindsym $mod+Shift+a focus child
 
-# workspace related controls are done with external command which is triggered 
-# through rofi - ~/bin/wksp
-#
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
@@ -76,6 +72,11 @@ mode "$mode_resize" {
         bindsym Shift+j resize grow   height 1 px or 1 ppt
         bindsym Shift+k resize shrink height 1 px or 1 ppt
         bindsym Shift+l resize grow   width  1 px or 1 ppt
+
+	bindsym Ctrl+h resize shrink width  1 px
+        bindsym Ctrl+j resize grow   height 1 px
+        bindsym Ctrl+k resize shrink height 1 px
+        bindsym Ctrl+l resize grow   width  1 px
 
         # back to normal
         #
@@ -107,21 +108,22 @@ set $base0C #86c1b9
 set $base0D #7cafc2
 set $base0E #ba8baf
 set $base0F #a16946
-#
-#
+
+
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $base0F $base0F $base05 $base0F $base0F
+client.focused          $base02 $base02 $base05 $base02 $base02
 client.focused_inactive $base00 $base00 $base05 $base00 $base00
 client.unfocused        $base00 $base00 $base05 $base00 $base00
 client.urgent           $base00 $base08 $base05 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background $base07
 
-# per window settings
+# universal window settings
 #
 for_window [class="^.*"] border pixel 2
 for_window [title="^.*noborder.*"] border pixel 0
+hide_edge_borders smart
 
 # rofi
 #
@@ -133,7 +135,6 @@ bindsym $mod+t exec ~/bin/rofi_scripts/rofi-iso8859-1.py
 
 bindsym $mod+Ctrl+q exec rofi-pass
 
-hide_edge_borders smart
 #exec  compton --config ~/.config/compton.conf 
 
 # screenshot keybindings
@@ -151,17 +152,7 @@ exec_always feh --bg-fill ~/.wallpaper
 exec xset s off
 exec xset -dpms
 
-# starts cinnamon's screensaver daemon for if it's used to lock the screen
-# and adds the binding for locking 
-#
-#exec cinnamon-screensaver
 bindsym $mod+shift+x exec ~/bin/lock i3lockfancy
-
-# i3-gaps
-# 
-# gaps outer 10
-# gaps inner 10
-# smart_gaps on
 
 # Volume keys
 #
@@ -173,31 +164,32 @@ bindsym Ctrl+XF86AudioRaiseVolume exec cmus-remote -v +5%
 
 # Media player controls
 #
-bindsym XF86AudioPlay exec playerctl -p cmus play-pause
-bindsym XF86AudioPause exec playerctl -p cmus pause
-bindsym XF86AudioNext exec playerctl -p cmus next
-bindsym XF86AudioPrev exec playerctl -p cmus previous
+set $playpause playerctl -p cmus play-pause
+set $pause playerctl -p cmus pause
+set $next playerctl -p cmus next
+set $previous playerctl -p cmus previous
 
-bindsym $hyper+z exec playerctl -p cmus play-pause
-bindsym $hyper+x exec playerctl -p cmus pause
-bindsym $hyper+c exec playerctl -p cmus next
-bindsym $hyper+v exec playerctl -p cmus previous
+bindsym XF86AudioPlay exec $playpause
+bindsym XF86AudioPause exec $playpause
+bindsym XF86AudioNext exec $next
+bindsym XF86AudioPrev exec $previous
+
+bindsym $hyper+z exec $previous
+bindsym $hyper+x exec $pause
+bindsym $hyper+c exec $playpause
+bindsym $hyper+v exec $next
 
 workspace_layout tabbed
 
-focus_follows_mouse no
 
 # Move to primary workspace and launch start up applications
 #
-exec i3 workspace main
-exec i3 workspace bt
 exec qbittorrent
 exec sleep 3
-exec bars --startup
+exec_always killall polybar
+exec_always bars --startup
 # exec --no-startup-id unclutter -idle 1
 exec redshift 
-exec telegram
-exec discord
 #exec pavucontrol
 exec xinput set-prop 8 "libinput Middle Emulation Enabled" 1
 
@@ -205,48 +197,8 @@ exec xinput set-prop 8 "libinput Middle Emulation Enabled" 1
 #
 bindsym Ctrl+q exec ~/.config/i3/firefox-ctrl-q-workaround/noctrlq.sh
 
-# Scratchpad
-#
-# Terminal - Just a terminal to do terminally things
-exec ~/bin/scratchpad/terminal
-for_window [title="termite-scratchpad"] floating enable
-for_window [title="termite-scratchpad"] move scratchpad
-for_window [title="termite-scratchpad"] resize set $floating_default_width $floating_default_height
-bindsym $mod+u [title="termite-scratchpad"] scratchpad show; [title="termite-scratchpad"] move position center
-# Music - cmus in termite with the title "music"
-exec ~/bin/scratchpad/music
-for_window [class="^music$"] floating enable
-for_window [class="^music$"] move scratchpad
-for_window [class="^music$"] resize set $floating_default_width $floating_default_height
-bindsym $mod+m [class="^music$"] scratchpad show; [class="^music$"] move position center
-# Telegram - Using title allows the media viewer window to be made fullscreen on
-# the current workspace rather than being put in the scratchpad
-for_window [title="Telegram"] floating enable
-for_window [title="Telegram"] move scratchpad
-for_window [title="Telegram"] resize set $floating_default_width $floating_default_height
-for_window [title="Media viewer" class="Telegram"] fullscreen
-bindsym $mod+t [title="Telegram"] scratchpad show; [title="Telegram"] move position center
-# Discord - the width is too small but Discord sorts itself out anyways
-for_window [class="discord"] floating enable
-for_window [class="discord"] move scratchpad
-for_window [class="discord"] resize set $floating_default_width $floating_default_height
-bindsym $mod+y [class="discord"] scratchpad show; [class="discord"] move position center
-# qBittorrent - using title with "v" makes it so other windows (e.g. add 
-# torrent) are shown on current workspace
-for_window [class="^qBittorrent"] floating enable
-for_window [class="^qBittorrent"] move scratchpad
-for_window [class="^qBittorrent"] resize set $floating_default_width $floating_default_height
-bindsym $mod+Shift+m [class="^qBittorrent"] scratchpad show; [class="^qBittorrent"] move position center
-# Pavucontrol -
-#for_window [title="^Volume Control$"] floating enable
-#for_window [title="^Volume Control$"] move scratchpad
-#for_window [title="^Volume Control$"] resize set $floating_default_width $floating_default_height
-#bindsym $mod+o [title="^Volume Control$"] scratchpad show; [title="^Volume Control$"] move position center
-#
-
-
 # workspaces
-set $ws1 "1:q"
+set $dash "1:q"
 set $ws2 "2:w"
 set $ws3 "3:f"
 set $ws4 "4:p"
@@ -258,7 +210,7 @@ set $ws9 "9:y"
 
 
 # switch to workspace
-bindsym $hyper+q workspace $ws1
+bindsym $hyper+q workspace $dash
 bindsym $hyper+w workspace $ws2
 bindsym $hyper+f workspace $ws3
 bindsym $hyper+p workspace $ws4
@@ -268,8 +220,18 @@ bindsym $hyper+l workspace $ws7
 bindsym $hyper+u workspace $ws8
 bindsym $hyper+y workspace $ws9
 
+# switch workspace - primary workspaces
+# i don't get past g because i don't want to rebind j (focus window down) to
+# anything else
+bindsym $mod+q workspace $dash
+bindsym $mod+w workspace $ws2
+bindsym $mod+f workspace $ws3
+bindsym $mod+p workspace $ws4
+bindsym $mod+g workspace $ws5
+
+
 # move focused container to workspace
-bindsym $hyper+a move container to workspace $ws1
+bindsym $hyper+a move container to workspace $dash
 bindsym $hyper+r move container to workspace $ws2
 bindsym $hyper+s move container to workspace $ws3
 bindsym $hyper+t move container to workspace $ws4
@@ -278,3 +240,24 @@ bindsym $hyper+h move container to workspace $ws6
 bindsym $hyper+n move container to workspace $ws7
 bindsym $hyper+e move container to workspace $ws8
 bindsym $hyper+i move container to workspace $ws9
+
+# move focused container to workspace - primary workspaces
+# i don't get past g because i don't want to rebind j (focus window down) to
+# anything else
+#
+#bindsym $mod+Shift+q workspace $dash
+# ^ i don't want to accidentally move something to the dash screen as i don't
+# want it to change, also the bind is taken and i am lazy
+bindsym $mod+Shift+w move container to workspace $ws2
+bindsym $mod+Shift+f move container to workspace $ws3
+bindsym $mod+Shift+p move container to workspace $ws4
+bindsym $mod+Shift+g move container to workspace $ws5
+
+
+# dash(board)
+exec --no-startup-id "i3-msg 'workspace 1:q; append_layout /home/alvie/.config/i3/dash.json'"
+exec --no-startup-id /home/alvie/bin/dash/terminal
+exec --no-startup-id /home/alvie/bin/dash/music
+exec --no-startup-id compton
+exec --no-startup-id /home/alvie/bin/gamebar
+exec --no-startup-id thunderbird
