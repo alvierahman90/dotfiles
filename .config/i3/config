@@ -18,7 +18,7 @@ focus_follows_mouse no
 # window title font
 #
 #font pango:Systen San Francisco Display Ultralight 10
-font scientifica
+font curie
 
 floating_modifier $mod
 
