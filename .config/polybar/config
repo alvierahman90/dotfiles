@@ -166,7 +166,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 label = %time%
 
 [global/wm]
-margin-top = 5%
+margin-top = 10%
 margin-bottom = 0
 ; vim:ft=dosini
 
