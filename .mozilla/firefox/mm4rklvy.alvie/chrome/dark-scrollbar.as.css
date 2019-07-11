@@ -1,0 +1,39 @@
+/* modified from  u/Juankestein https://www.reddit.com/r/firefox/comments/8yd5c2/custom_minimalistinc_slim_scrollbar_for_dark/ */
+scrollbar, scrollbar *, scrollcorner {
+    -moz-appearance: none !important;
+    --scrollbar-width: 10px;
+    --scrollbar-height: var(--scrollbar-width);
+}
+
+scrollbar, scrollcorner  {
+    background: transparent !important;
+}
+scrollbar[orient="vertical"] {
+    width: var(--scrollbar-width) !important;
+    min-width: var(--scrollbar-width) !important;
+}
+scrollbar[orient="horizontal"] {
+    height: var(--scrollbar-height) !important;
+    min-height: var(--scrollbar-height) !important;
+}
+
+scrollbar thumb {
+    background: #282828 !important;
+}
+scrollbar thumb:hover,
+scrollbar thumb:active {
+    background: #383838 !important;
+}
+
+scrollbar:inactive scrollbarbutton {
+    background-color: #181818 !important;
+}
+scrollbar scrollbarbutton:inactive {
+    background: #282828 !important;
+}
+scrollbar scrollbarbutton:inactive {
+    background: #383838 !important;
+}
+scrollbar scrollbarbutton {
+    display: none !important;
+}
