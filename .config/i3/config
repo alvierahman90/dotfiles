@@ -184,7 +184,10 @@ workspace_layout tabbed
 
 # Move to primary workspace and launch start up applications
 #
-exec qbittorrent
+#wq
+#
+#
+#exec qbittorrent
 exec sleep 3
 exec_always killall polybar
 exec_always bars --startup
@@ -255,9 +258,10 @@ bindsym $mod+Shift+g move container to workspace $ws5
 
 
 # dash(board)
-exec --no-startup-id "i3-msg 'workspace 1:q; append_layout /home/alvie/.config/i3/dash.json'"
-exec --no-startup-id /home/alvie/bin/dash/terminal
-exec --no-startup-id /home/alvie/bin/dash/music
+# exec --no-startup-id "i3-msg 'workspace 1:q; append_layout /home/alvie/.config/i3/dash.json'"
+# exec --no-startup-id /home/alvie/bin/dash/terminal
+# exec --no-startup-id /home/alvie/bin/dash/music
 exec --no-startup-id compton
 exec --no-startup-id /home/alvie/bin/gamebar
-exec --no-startup-id thunderbird
+exec ~/bin/lock i3lockfancy
+
