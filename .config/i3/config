@@ -164,10 +164,10 @@ bindsym Ctrl+XF86AudioRaiseVolume exec cmus-remote -v +5%
 
 # Media player controls
 #
-set $playpause playerctl -p cmus play-pause
-set $pause playerctl -p cmus pause
-set $next playerctl -p cmus next
-set $previous playerctl -p cmus previous
+set $playpause mpc toggle
+set $pause mpc pause
+set $next mpc next
+set $previous mpc prev
 
 bindsym XF86AudioPlay exec $playpause
 bindsym XF86AudioPause exec $playpause
@@ -192,13 +192,15 @@ exec sleep 3
 exec_always killall polybar
 exec_always bars --startup
 # exec --no-startup-id unclutter -idle 1
-exec redshift 
+exec redshift -l 51.5287352:-0.3817683
 #exec pavucontrol
 exec xinput set-prop 8 "libinput Middle Emulation Enabled" 1
+exec mpd
+exec sleep 10 && /usr/local/bin/mpdas
 
 # Fucking Firefox, man
 #
-bindsym Ctrl+q exec ~/.config/i3/firefox-ctrl-q-workaround/noctrlq.sh
+#bindsym Ctrl+q exec ~/.config/i3/firefox-ctrl-q-workaround/noctrlq.sh
 
 # workspaces
 set $dash "1:q"
