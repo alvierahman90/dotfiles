@@ -49,14 +49,13 @@ font-0 = curie
 font-1 = ${root.font-0}
 font-2 = ${root.font-0}
 
-modules-left = pulseaudio cmus_volume music
+modules-left = pulseaudio music
 modules-center = date
-modules-right = twitch xwindow i3
+modules-right = xwindow i3
 module-padding = 0
 
 tray-position = right
 tray-padding = 10
-tray-transparent = false
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -178,7 +177,7 @@ exec = ~/.config/polybar/redshift.sh
 [module/music]
 type = custom/script
 interval = 0.5
-exec = ~/.config/polybar/music.py
+exec = ~/.config/polybar/music.sh
 
 [module/crypto]
 type = custom/script
