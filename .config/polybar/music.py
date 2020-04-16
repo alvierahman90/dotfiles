@@ -2,7 +2,8 @@
 
 import subprocess
 
-APPLICATION = 'cmus'
+MPD = 'mpd'
+APPLICATION = MPD
 
 
 def player(commands):
@@ -11,6 +12,9 @@ def player(commands):
     Automatically adds the playerctl command and specifies music player to
     control - cmus
     """
+    if APPLICATION == MPD:
+        return subprocess.run(['mpc'] + commands,
+                              stdout=subprocess.PIPE).stdout.decode('utf-8')[:-1]
     return subprocess.run(['playerctl', '-p', APPLICATION] + commands,
                           stdout=subprocess.PIPE).stdout.decode('utf-8')[:-1]
 
@@ -25,6 +29,9 @@ def playing():
     """
     Returns True when music is playing, else returns False
     """
+    if APPLICATION == MPD:
+        return '[playing]' in player(['status'])
+
     return player(['status']) == 'Playing'
 
 
@@ -74,18 +81,21 @@ def main():
     Main function when script is run
     """
     if not is_player_active():
-        print('cmus not running')
+        print(f'{APPLICATION} not running')
         return 0
 
-    if get_track() == "":
-        print("no music playing")
-        return 0
 
-    status_message = "{playing} {track} - {artist}".format(
-        playing=status_symbol(),
-        track=get_track(),
-        artist=get_artist()
-    )
+    if APPLICATION != MPD:
+        if get_track() == "":
+            print("no music playing")
+            return 0
+        status_message = "{playing} {track} - {artist}".format(
+            playing=status_symbol(),
+            track=get_track(),
+            artist=get_artist()
+        )
+    else:
+        status_message = f"{status_symbol()} {player(['current'])}"
 
     print(status_message)
     return 0
