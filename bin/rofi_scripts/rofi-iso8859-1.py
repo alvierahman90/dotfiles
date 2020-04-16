@@ -409,7 +409,15 @@ chardict = [
   {
     "code": "\u00FF",
     "name": "Y WITH DIAERESIS"
-  }
+  },
+  {
+          "code": "Δ",
+          "name": "Uppercase delta"
+          },
+  {
+          "code": "π",
+          "name": "pi"
+          }
 ]
 
 for i in chardict:
