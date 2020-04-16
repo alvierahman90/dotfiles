@@ -11,6 +11,7 @@
 	set nofoldenable
 	set laststatus=2
 	set ignorecase
+	colo default
 
 	runtime! ftplugin/man.vim
 	packadd! editexisting
@@ -18,8 +19,8 @@
 " Highlighting cursor position
 hi clear cursorline
 hi clear cursorcolumn
-hi cursorline ctermbg=5 ctermfg=7
-hi cursorcolumn ctermbg=5 ctermfg=7
+hi cursorline ctermbg=7 ctermfg=0
+hi cursorcolumn ctermbg=7 ctermfg=0
 
 augroup CursorLine
 	au!
@@ -30,8 +31,8 @@ augroup CursorLine
 augroup END
 
 " 80 margin
-let &cc=join(range(81,999),",")
-highlight ColorColumn ctermbg=0
+"let &cc=join(range(81,999),",")
+"highlight ColorColumn ctermbg=0
 
 " Keeping the cursor in the center of the screen when possible
 	augroup VCenterCursor
@@ -158,10 +159,6 @@ highlight ColorColumn ctermbg=0
 " Goyo config
 	let g:goyo_width=80
 	let g:goyo_height=24
-
-" Nofrils theme config
-	colo nofrils-dark
-	NofrilsFocusNormal
 " vimscrot
 	command Screenshot !~/.vim/shell_scripts/vimscrot.sh
 " Switch HL / ^$ for faster movement
@@ -173,4 +170,4 @@ highlight ColorColumn ctermbg=0
 " listchars
 	set list
 	set listchars=nbsp:_,tab:<·>,extends:>,space:·
-
+	hi clear listchar
