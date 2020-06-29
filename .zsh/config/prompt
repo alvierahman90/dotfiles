@@ -1,8 +1,0 @@
-source ~/.zsh/config/colors
-
-prompt minimal
-hostname()
-{
-	echo "${HOSTNAME:0:2} "
-}
-PROMPT='%{$fg[yellow]%}$(hostname)$(echo $PWD | sed -e "s#$HOME#~#" | rev | cut -d '/' -f -2 | rev)%{$reset_color%} '

@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-echo Current shell is $(tput cols) columns wide and $(tput lines) lines tall

@@ -1,7 +1,0 @@
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
-export BETTER_EXCEPTIONS=1
-export VIMRUNTIME="/usr/share/vim/current"
-export GOPATH="$HOME/gopath"
-export PATH="$PATH:/home/$USER/bin:$GOPATH:$GOPATH/bin:$PATH"
-export GPG_TTY=$(tty)

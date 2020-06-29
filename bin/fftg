@@ -1,4 +1,0 @@
-#!/bin/bash
-rm $HOME/fft.g
-fft -ng > $HOME/fft.g
-cat fft.g 

@@ -1,6 +1,0 @@
-#!/bin/bash
-
-rofi \
-	-i \
-	-theme base16-default-dark \
-	$@ \

@@ -1,9 +1,0 @@
-These lists do not include what is included by the following patterns:
-
-- devel_C_C++
-- devel_basis
-- devel_rpm_build
-- devel_python3
-
-They can be installed with:
-sudo zypper in -t pattern devel_C_C++ devel_basis devel_rpm_build devel_python3
