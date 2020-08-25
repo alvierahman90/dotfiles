@@ -4,22 +4,11 @@
 rfilename=./"$(basename $(pwd))"
 filename=./"$(basename $(pwd))".md
 
+echo "extracting photos..."
 unzip Photos.zip
-
-echo '
----
-title: 
-author: Alvie Rahman
-date: \today
----' > $filename
-
-exiftran -ai $(ls *jpg*)
-
-for file in $(ls *.jpg)
-do
-	echo "![]($file)" >> $filename
-done
-
-render $filename
+echo "removing metadata..."
+exiftool -all="" *.jpg
+echo "combining into pdf in name order..."
 convert *.jpg "$rfilename".pdf
+echo "opening using zathura..."
 zathura "$rfilename".pdf
