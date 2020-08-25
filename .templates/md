@@ -1,7 +1,7 @@
 ---
-author: Alvie Rahman $\cdot$ \today
-date: Due duedate
-title: {{ directory.split('/')[5] + ' $\cdot$ unit $\cdot$ title $\cdot$ workid' if '/home/alvie/Documents/school' in directory else '// TODO' }}
+author: Alvie Rahman
+date: \today
+title: \frac{}
 ---
 
 
