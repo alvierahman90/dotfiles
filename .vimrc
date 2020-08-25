@@ -30,9 +30,9 @@ augroup CursorLine
 	au WinLeave * setlocal nocursorcolumn
 augroup END
 
-" 80 margin
-"let &cc=join(range(81,999),",")
-"highlight ColorColumn ctermbg=0
+" 100 margin
+let &cc=join(range(101,999),",")
+highlight ColorColumn ctermbg=0
 
 " Keeping the cursor in the center of the screen when possible
 	augroup VCenterCursor
