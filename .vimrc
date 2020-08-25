@@ -19,8 +19,8 @@
 " Highlighting cursor position
 hi clear cursorline
 hi clear cursorcolumn
-hi cursorline ctermbg=2 ctermfg=0
-hi cursorcolumn ctermbg=2 ctermfg=0
+"hi cursorline ctermbg=2 ctermfg=0
+"hi cursorcolumn ctermbg=2 ctermfg=0
 
 augroup CursorLine
 	au!
@@ -149,12 +149,6 @@ highlight ColorColumn ctermbg=0
 
 " Let YouCompleteMe run on any filetype
 	let g:ycm_filetype_blacklist = {}
-
-" Special
-	let wallpaper  = "/home/alvie/Documents/wallpapers/planet_64.png"
-	let background = "#311a38"
-	let foreground = "#bbbbd4"
-	let cursor     = "#bbbbd4"
 
 " Goyo config
 	let g:goyo_width=80
