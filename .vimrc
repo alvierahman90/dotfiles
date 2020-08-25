@@ -19,8 +19,8 @@
 " Highlighting cursor position
 hi clear cursorline
 hi clear cursorcolumn
-hi cursorline ctermbg=7 ctermfg=0
-hi cursorcolumn ctermbg=7 ctermfg=0
+hi cursorline ctermbg=2 ctermfg=0
+hi cursorcolumn ctermbg=2 ctermfg=0
 
 augroup CursorLine
 	au!
