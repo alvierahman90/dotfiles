@@ -9,29 +9,9 @@ DOTFILES_MANAGED=""
 [ "$TERM" != "dumb" ] && [ "$HOST" = "desktot" ] && alias gconfig='/usr/bin/git --git-dir=/home/alvie/Documents/projects/dotfiles.git --work-tree=/home/alvie'
 [ "$TERM" != "dumb" ] && [ "$HOST" = "desktot" ] && gconfig config --local status.showUntrackedFiles no
 
-# aliases 
-alias xo="xdg-open"
-alias pag="ps aux | grep -v grep | grep -i "
-alias paig="ps aux | grep -iv grep | grep -i "
-alias dc="docker-compose"
-alias ftc="xclip -selection clipboard -i"
-alias tv="ranger ~/Downloads/Torrents/TV.Shows/"
-alias ..="cd .."
-alias v="vim"
-alias sl="ls"
-alias lyrics='less "$(echo Music/$(mpc -f "%file%" status | head -n1) | rev | cut -d. -f2- | rev).lrc"'
-
-alias g="git"
-alias commit="git commit -m"
-alias add="git add"
-alias status="git status"
-
-alias ls="ls -h --color=always"
-alias ll="ls -l"
-alias la="ll -A"
-
-alias cal="cal -m"
-alias c="cal -3"
-alias cy="cal -y"
-
+source ~/.bash_aliases
 source ~/.bash_exports
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/alvie/.sdkman"
+[[ -s "/home/alvie/.sdkman/bin/sdkman-init.sh" ]] && source "/home/alvie/.sdkman/bin/sdkman-init.sh"
