@@ -1,0 +1,39 @@
+\documentclass[10pt]{extarticle}
+
+\usepackage[a4paper, margin=1.27cm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage{graphicx}
+\usepackage[backend=bibtex, style=verbose-trad2]{biblatex}
+\usepackage{booktabs} \usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{amsmath}
+% \setlength{\parindent}{1in} % Default is 15pt.
+
+\graphicspath{{'{{images/}}'}}
+
+\title{{ '{' + (directory.split('/')[5] + ' $\cdot$ // TODO add title' if '/home/alvie/Documents/school' in directory else '// TODO') + '}' }}
+\author{Alvie Rahman \today}
+\makeatletter
+\let\runauthor\@author
+\let\runtitle\@title
+\makeatother
+
+\pagestyle{fancy}
+\headheight = 1.27cm
+\lhead{\runauthor}
+\chead{\thepage}
+\rhead{\runtitle}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+content
+
+\end{document}
