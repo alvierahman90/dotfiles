@@ -1,22 +1,7 @@
 :root {
-	/* from https://github.com/samme/base16-styles/blob/master/css-variables/base16-default-dark.css */
-	/* apart from comments */
-	--base00: #181818; /* Default Background */
-	--base01: #282828; /* Lighter Background (status bars */
-	--base02: #383838; /* Selection Background */
-	--base03: #585858; /* Comments, invisibles, line higlighting */
-	--base04: #b8b8b8; /* Dark foreground (status bars) */
-	--base05: #d8d8d8; /* Default Foreground, Caret, Delimiters, Operators */
-	--base06: #e8e8e8; /*  Light Foreground (Not often used) */
-	--base07: #f8f8f8; /* Light Background (Not often used) */
-	--base08: #ab4642; /* Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */
-	--base09: #dc9656; /* Integers, Boolean, Constants, XML Attributes, Markup Link Url */
-	--base0A: #f7ca88; /* Classes, Markup Bold, Search Text Background */
-	--base0B: #a1b56c; /* Strings, Inherited Class, Markup Code, Diff Inserted */
-	--base0C: #86c1b9; /* Support, Regular Expressions, Escape Characters, Markup Quotes */
-	--base0D: #7cafc2; /* Functions, Methods, Attribute IDs, Headings */
-	--base0E: #ba8baf; /* Keywords, Storage, Selector, Markup Italic, Diff Changed */
-	--base0F: #a16946; /* Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>  */
+	--colBg: #32302f;
+	--colFg: #ebdbb2;
+	--colGreen: #98971a;
 }
 
 #urlbar { 
@@ -33,27 +18,29 @@
 	display: none;
 }
 
-#TabsToolbar {
-	background-color: var(--base00) !important;
+#TabsToolbar
+, #urlbar-background {
+	background-color: var(--colBg) !important;
 }
 
 #connection-icon 
 , vbox.identity-popup-security-content {
-	fill: var(--base0B) !important;
+	fill: var(--colGreen) !important;
 }
 
 #identity-icon-labels 
 , .identity-popup-connection-secure[when-connection^=secure] {
-	color: var(--base0B) !important;
+	color: var(--colGreen) !important;
 }
 
 #nav-bar
 , #sidebar-header
-, .tabbrowser-tab[selected=true]  .tab-loading-burst{
-	background-color: var(--base00) !important;
+, .tabbrowser-tab[selected=true]  .tab-loading-burst
+, #urlbarView-body-inner {
+	background-color: var(--colBg) !important;
 } 
 #sidebar-splitter {
-	background-color: var(--base00) !important;
+	background-color: var(--colBg) !important;
 	border: none !important;
 }
 
@@ -62,19 +49,7 @@
 	opacity: 0;
 	pointer-events: none;
 }
-#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
-	visibility: collapse !important;
-}
 
-#sidebar-title
-, #sidebar-switcher-arrow 
-{
-	color: var(--base-05) !important;
-}
-
-
-/* ~~modified from  u/Juankestein https://www.reddit.com/r/firefox/comments/8yd5c2/custom_minimalistinc_slim_scrollbar_for_dark/~~ */
-/* https://www.reddit.com/r/FirefoxCSS/comments/cbbwnm/fix_for_dark_scrollbars_in_ff69_beta_channel/etp4tf4/ */
-#alltabs-button {
-	  -moz-binding: url(data:text/xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjwhLS0gQ29weXJpZ2h0IChjKSAyMDE3IEhhZ2dhaSBOdWNoaQpBdmFpbGFibGUgZm9yIHVzZSB1bmRlciB0aGUgTUlUIExpY2Vuc2U6Cmh0dHBzOi8vb3BlbnNvdXJjZS5vcmcvbGljZW5zZXMvTUlUCiAtLT4KCjwhLS0gUnVuIHVzZXJDaHJvbWUuanMvdXNlckNocm9tZS54dWwgYW5kIC51Yy5qcy8udWMueHVsLy5jc3MgZmlsZXMgIC0tPgo8YmluZGluZ3MgeG1sbnM9Imh0dHA6Ly93d3cubW96aWxsYS5vcmcveGJsIj4KICAgIDxiaW5kaW5nIGlkPSJqcyI+CiAgICAgICAgPGltcGxlbWVudGF0aW9uPgogICAgICAgICAgICA8Y29uc3RydWN0b3I+PCFbQ0RBVEFbCiAgICAgICAgICAgICAgICBpZih3aW5kb3cudXNlckNocm9tZUpzTW9kKSByZXR1cm47CiAgICAgICAgICAgICAgICB3aW5kb3cudXNlckNocm9tZUpzTW9kID0gdHJ1ZTsKICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgdmFyIGNocm9tZUZpbGVzID0gRmlsZVV0aWxzLmdldERpcigiVUNocm0iLCBbXSkuZGlyZWN0b3J5RW50cmllczsKICAgICAgICAgICAgICAgIHZhciB4dWxGaWxlcyA9IFtdOwogICAgICAgICAgICAgICAgdmFyIHNzcyA9IENjWydAbW96aWxsYS5vcmcvY29udGVudC9zdHlsZS1zaGVldC1zZXJ2aWNlOzEnXS5nZXRTZXJ2aWNlKENpLm5zSVN0eWxlU2hlZXRTZXJ2aWNlKTsKICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgd2hpbGUoY2hyb21lRmlsZXMuaGFzTW9yZUVsZW1lbnRzKCkpIHsKICAgICAgICAgICAgICAgICAgICB2YXIgZmlsZSA9IGNocm9tZUZpbGVzLmdldE5leHQoKS5RdWVyeUludGVyZmFjZShDaS5uc0lGaWxlKTsKICAgICAgICAgICAgICAgICAgICB2YXIgZmlsZVVSSSA9IFNlcnZpY2VzLmlvLm5ld0ZpbGVVUkkoZmlsZSk7CiAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgaWYoZmlsZS5pc0ZpbGUoKSkgewogICAgICAgICAgICAgICAgICAgICAgICBpZigvKF51c2VyQ2hyb21lfFwudWMpXC5qcyQvaS50ZXN0KGZpbGUubGVhZk5hbWUpKSB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBTZXJ2aWNlcy5zY3JpcHRsb2FkZXIubG9hZFN1YlNjcmlwdFdpdGhPcHRpb25zKGZpbGVVUkkuc3BlYywge3RhcmdldDogd2luZG93LCBpZ25vcmVDYWNoZTogdHJ1ZX0pOwogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIGVsc2UgaWYoLyhedXNlckNocm9tZXxcLnVjKVwueHVsJC9pLnRlc3QoZmlsZS5sZWFmTmFtZSkpIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHh1bEZpbGVzLnB1c2goZmlsZVVSSS5zcGVjKTsKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBlbHNlIGlmKC9cLmFzXC5jc3MkL2kudGVzdChmaWxlLmxlYWZOYW1lKSkgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgaWYoIXNzcy5zaGVldFJlZ2lzdGVyZWQoZmlsZVVSSSwgc3NzLkFHRU5UX1NIRUVUKSkKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzc3MubG9hZEFuZFJlZ2lzdGVyU2hlZXQoZmlsZVVSSSwgc3NzLkFHRU5UX1NIRUVUKTsKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBlbHNlIGlmKC9eKD8hKHVzZXJDaHJvbWV8dXNlckNvbnRlbnQpXC5jc3MkKS4rXC5jc3MkL2kudGVzdChmaWxlLmxlYWZOYW1lKSkgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgaWYoIXNzcy5zaGVldFJlZ2lzdGVyZWQoZmlsZVVSSSwgc3NzLlVTRVJfU0hFRVQpKQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNzcy5sb2FkQW5kUmVnaXN0ZXJTaGVldChmaWxlVVJJLCBzc3MuVVNFUl9TSEVFVCk7CiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gbG9hZFhVTCgpIHsKICAgICAgICAgICAgICAgICAgICBpZih4dWxGaWxlcy5sZW5ndGggPiAwKSB7CiAgICAgICAgICAgICAgICAgICAgICAgIGRvY3VtZW50LmxvYWRPdmVybGF5KHh1bEZpbGVzLnNoaWZ0KCksIG51bGwpOwogICAgICAgICAgICAgICAgICAgICAgICBzZXRUaW1lb3V0KGxvYWRYVUwsIDUpOwogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIH0sIDApOwogICAgICAgICAgICBdXT48L2NvbnN0cnVjdG9yPgogICAgICAgIDwvaW1wbGVtZW50YXRpb24+CiAgICA8L2JpbmRpbmc+CjwvYmluZGluZ3M+);
-  }
+#main-window:not([tabsintitlebar="true"]) #TabsToolbar { visibility: collapse !important; }
+#sidebar-title , #sidebar-switcher-arrow { color: var(--colFg) !important; }
+#urlbar-input-container { border-color: var(--colBg) !important;}
