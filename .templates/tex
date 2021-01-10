@@ -1,4 +1,4 @@
-\documentclass[10pt]{extarticle}
+\documentclass[10pt]{article}
 
 \usepackage[a4paper, margin=1.27cm]{geometry}
 \usepackage[normalem]{ulem}
@@ -7,7 +7,10 @@
 \usepackage{booktabs} \usepackage{fancyhdr}
 \usepackage{enumitem}
 \usepackage{multicol}
+\usepackage{multirow}
 \usepackage{amsmath}
+\usepackage{wrapfig}
+\usepackage{sectsty}
 % \setlength{\parindent}{1in} % Default is 15pt.
 
 \graphicspath{{'{{images/}}'}}
