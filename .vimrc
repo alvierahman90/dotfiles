@@ -17,12 +17,6 @@
 	runtime! ftplugin/man.vim
 	packadd! editexisting
 
-" Highlighting cursor position
-hi clear cursorline
-hi clear cursorcolumn
-"hi cursorline ctermbg=2 ctermfg=0
-"hi cursorcolumn ctermbg=2 ctermfg=0
-
 augroup CursorLine
 	au!
 	au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
@@ -30,10 +24,6 @@ augroup CursorLine
 	au WinLeave * setlocal nocursorline
 	au WinLeave * setlocal nocursorcolumn
 augroup END
-
-" 100 margin
-let &cc=join(range(101,999),",")
-highlight ColorColumn ctermbg=0
 
 " Keeping the cursor in the center of the screen when possible
 	augroup VCenterCursor
@@ -65,6 +55,7 @@ highlight ColorColumn ctermbg=0
 	Plug 'tpope/vim-surround'
 	Plug 'w0rp/ale'
 	Plug 'junegunn/goyo.vim'
+	Plug 'morhetz/gruvbox'
 	call plug#end()
 
 " Spelling mistakes 
@@ -166,3 +157,18 @@ highlight ColorColumn ctermbg=0
 	set list
 	set listchars=nbsp:_,tab:<·>,extends:>,space:·
 	hi clear listchar
+
+" Highlighting cursor position
+hi clear cursorline
+hi clear cursorcolumn
+"hi cursorline ctermbg=2 ctermfg=0
+"hi cursorcolumn ctermbg=2 ctermfg=0
+
+" 100 margin
+let &cc=join(range(101,999),",")
+highlight ColorColumn ctermbg=0
+
+" colorscheme
+autocmd vimenter * ++nested colorscheme gruvbox
+set background=dark
+let g:gruvbox_contrast_dark='soft'
