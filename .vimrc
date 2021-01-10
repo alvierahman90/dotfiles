@@ -11,6 +11,7 @@
 	set nofoldenable
 	set laststatus=2
 	set ignorecase
+	set bs=2
 	colo default
 
 	runtime! ftplugin/man.vim
