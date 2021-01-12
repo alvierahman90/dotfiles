@@ -196,6 +196,9 @@ separator_color = "#d8d8d8"
 	appname="Discord"
 	markup=no
 
+[spotify]
+appname="Spotify"
+format=""
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
@@ -228,7 +231,7 @@ separator_color = "#d8d8d8"
 #    # This notification will not be displayed
 #    summary = "foobar"
 #    format = ""
-
+#
 #[signed_on]
 #    appname = Pidgin
 #    summary = "*signed on*"
