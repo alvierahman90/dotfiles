@@ -12,6 +12,7 @@
 	set laststatus=2
 	set ignorecase
 	set bs=2
+	set title
 	colo default
 
 	runtime! ftplugin/man.vim
@@ -143,8 +144,8 @@ augroup END
 	let g:ycm_filetype_blacklist = {}
 
 " Goyo config
-	let g:goyo_width=80
-	let g:goyo_height=24
+	let g:goyo_width=100
+	let g:goyo_height=25
 " vimscrot
 	command Screenshot !~/.vim/shell_scripts/vimscrot.sh
 " Switch HL / ^$ for faster movement
