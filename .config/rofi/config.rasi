@@ -1,5 +1,0 @@
-configuration {
-	modi: "window,run,combi,bm:~/.config/rofi/bm.sh,pass:~/.config/rofi/pass.sh";
-	combi-modi: "window,run,bm,pass";
-	theme: "gruvbox-dark-soft";
-}
