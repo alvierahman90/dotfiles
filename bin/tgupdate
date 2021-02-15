@@ -6,15 +6,9 @@ source /home/alvie/.tgupdate_secrets
 text="$(cat /proc/sys/kernel/hostname) - $(date)
 $1"
 
-if [ "$2" == "silent" ]
-then
-	notify="true"
-else
-	notify="false"
-fi
+[[ "$2" == "silent" ]] && disable_notification="true" || disable_notification="false"
 
 curl \
-	"https://api.telegram.org/bot$bot_id/sendMessage?chat_id=$chat_id&disable_notification=$notify" \
-	--data-urlencode "text=$text" \
-	| python -m json.tool
-echo ''
+	"https://api.telegram.org/bot$bot_id/sendMessage?chat_id=$chat_id&disable_notification=$disable_notification" \
+	--data-urlencode "text=$text"
+echo
