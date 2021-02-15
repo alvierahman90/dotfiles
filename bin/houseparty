@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+DATA_DIR="$HOME/.local/share/chromium-houseparty"
+HOUSEPARTY_URL="https://app.houseparty.com"
+
+[[ -d "$DATA_DIR" ]] && mkdir "$DATA_DIR"
+
+chromium --app="$HOUSEPARTY_URL" --user-data-dir="$DATA_DIR"
